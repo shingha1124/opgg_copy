@@ -1,0 +1,15 @@
+platform :ios, '13.0'
+
+
+def install_common
+  pod 'RxSwift', '6.5.0'
+  pod 'RxAppState', '~> 1.6'
+  pod 'SwiftLint'
+  pod 'Then', '~> 2.7'
+end
+
+target 'OPGGCopy' do
+  use_frameworks!
+  install_common
+  pod 'Alamofire'
+end
