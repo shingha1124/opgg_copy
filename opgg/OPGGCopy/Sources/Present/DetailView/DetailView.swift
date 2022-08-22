@@ -11,19 +11,22 @@ struct DetailView: View {
     
     @ObservedObject private var viewModel: DetailViewModel
     private let infoView: SummonerInfoView
-    private let prevSeasons: PreviousSeasonsView
+    private let prevSeasonsView: PreviousSeasonsView
+    private let leagueStatsView: LeagueStatsView
     
     init(_ viewModel: DetailViewModel) {
         self.viewModel = viewModel
         infoView = SummonerInfoView(viewModel.viewModels.info)
-        prevSeasons = PreviousSeasonsView(viewModel.viewModels.prevSeasons)
+        prevSeasonsView = PreviousSeasonsView(viewModel.viewModels.prevSeasons)
+        leagueStatsView = LeagueStatsView(viewModel.viewModels.leagueStats)
     }
     
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 0) {
                 infoView
-                prevSeasons
+                prevSeasonsView
+                leagueStatsView
             }
             .padding(0)
         }

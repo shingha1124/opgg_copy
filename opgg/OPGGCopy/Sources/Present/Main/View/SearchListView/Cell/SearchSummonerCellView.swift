@@ -42,7 +42,7 @@ struct SearchSummonerCellView: View {
 
 struct SearchSummonerCellView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = SearchSummonerCellViewModel(SearchSummoner())
+        let viewModel = SearchSummonerCellViewModel(PreviewMockData.shard.searchSummoner)
         SearchSummonerCellView(viewModel)
     }
 }

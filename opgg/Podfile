@@ -6,6 +6,7 @@ def install_common
   pod 'RxAppState', '~> 1.6'
   pod 'SwiftLint'
   pod 'Then', '~> 2.7'
+  pod 'SVGKit'
 end
 
 target 'OPGGCopy' do

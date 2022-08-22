@@ -1,5 +1,5 @@
 //
-//  previousSeasonsViewModel.swift
+//  LeagueStatsViewModel.swift
 //  OPGGCopy
 //
 //  Created by seongha shin on 2022/08/22.
@@ -7,14 +7,14 @@
 
 import Combine
 
-final class PreviousSeasonsViewModel: ObservableObject {
+final class LeagueStatsViewModel: ObservableObject {
     
     struct State {
-        var items = [PreviousSeasonsItemViewModel]()
+        var items = [LeagueStatsItemViewModel]()
     }
     
     struct Update {
-        let previousSeasons = PassthroughSubject<[PreviousSeason], Never>()
+        let leagueStats = PassthroughSubject<[LeagueStats], Never>()
     }
     
     @Published var state = State()
@@ -22,8 +22,8 @@ final class PreviousSeasonsViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     init() {
-        update.previousSeasons
-            .map { $0.map { PreviousSeasonsItemViewModel($0) } }
+        update.leagueStats
+            .map { $0.map { LeagueStatsItemViewModel($0) } }
             .sink(receiveValue: { [unowned self] items in
                 self.state.items = items
             })

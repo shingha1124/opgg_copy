@@ -20,7 +20,7 @@ struct SummonerDetail: Decodable {
     let updatedAt, renewableAt: Date
 //    let lpHistories: [LpHistory]
     let previousSeasons: [PreviousSeason]
-    let leagueStats: [LeagueStat]
+    let leagueStats: [LeagueStats]
 //    let mostChampions: MostChampions
 //    let recentChampionStats: [JSONAny]
     let ladderRank: LadderRank?
@@ -96,26 +96,16 @@ struct Season: Codable {
     }
 }
 
-struct LeagueStat: Decodable {
+struct LeagueStats: Decodable {
     let queueInfo: QueueInfo
     let tierInfo: TierInfo
     let win: Int
     let lose: Int
-    let isHotStreak: Bool
-    let isFreshBlood: Bool
-    let isVeteran: Bool
-    let isInactive: Bool
-    let updatedAt: Date?
 
     enum CodingKeys: String, CodingKey {
         case queueInfo = "queue_info"
         case tierInfo = "tier_info"
         case win, lose
-        case isHotStreak = "is_hot_streak"
-        case isFreshBlood = "is_fresh_blood"
-        case isVeteran = "is_veteran"
-        case isInactive = "is_inactive"
-        case updatedAt = "updated_at"
     }
 }
 

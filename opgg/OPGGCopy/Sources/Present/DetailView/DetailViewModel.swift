@@ -16,6 +16,7 @@ final class DetailViewModel: ObservableObject {
     struct ViewModels {
         let info = SummonerInfoViewModel()
         let prevSeasons = PreviousSeasonsViewModel()
+        let leagueStats = LeagueStatsViewModel()
     }
     
     let action = Action()
@@ -50,7 +51,12 @@ final class DetailViewModel: ObservableObject {
             .sink(receiveValue: viewModels.prevSeasons.update.previousSeasons.send(_:))
             .store(in: &cancellable)
         
-        let failedRequestDetail = requestDetail
+        successRequestDetail
+            .map { $0.leagueStats }
+            .sink(receiveValue: viewModels.leagueStats.update.leagueStats.send(_:))
+            .store(in: &cancellable)
+        
+        requestDetail
             .compactMap { $0.error }
             .sink(receiveValue: {
                 print($0)

@@ -29,6 +29,9 @@ final class MainViewModel: ObservableObject {
         
         let requestSearchSummoner = searchViewModel.state.searchText
             .filter { !$0.isEmpty }
+            .handleEvents(receiveOutput: {
+                print($0)
+            })
             .flatMap { [unowned self] name in
                 self.opggRepository.requestSearchSummoner(name)
             }
@@ -46,6 +49,13 @@ final class MainViewModel: ObservableObject {
             .sink { [unowned self] summoners in
                 self.state.searchSummoner = summoners
             }
+            .store(in: &cancellable)
+        
+        requestSearchSummoner
+            .compactMap { $0.error }
+            .sink(receiveValue: {
+                print($0)
+            })
             .store(in: &cancellable)
         
         Publishers.Merge(
