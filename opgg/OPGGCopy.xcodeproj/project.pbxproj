@@ -300,7 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				E0DF4F8E28B370F300D457E6 /* InfoView */,
-				E0DF4F9628B3966B00D457E6 /* previousSeasons */,
+				E0DF4F9628B3966B00D457E6 /* PreviousSeasons */,
+				E0DF4FA728B3B98100D457E6 /* LeagueStatsView */,
 			);
 			name = View;
 			path = "퍋ㅈ";
@@ -323,14 +324,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		E0DF4F9628B3966B00D457E6 /* previousSeasons */ = {
+		E0DF4F9628B3966B00D457E6 /* PreviousSeasons */ = {
 			isa = PBXGroup;
 			children = (
 				E0DF4F9B28B396D100D457E6 /* View */,
 				E0DF4F9728B3969D00D457E6 /* PreviousSeasonsViewModel.swift */,
 				E0DF4F9928B396A800D457E6 /* PreviousSeasonsView.swift */,
 			);
-			path = previousSeasons;
+			path = PreviousSeasons;
 			sourceTree = "<group>";
 		};
 		E0DF4F9B28B396D100D457E6 /* View */ = {
@@ -349,6 +350,13 @@
 				E0DF4FA528B3AE5000D457E6 /* SeasonData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		E0DF4FA728B3B98100D457E6 /* LeagueStatsView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LeagueStatsView;
 			sourceTree = "<group>";
 		};
 		E0EEDAEF28B1E67200756FF8 = {
