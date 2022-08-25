@@ -18,26 +18,24 @@ struct LeagueStatsItemView: View {
     var body: some View {
         HStack {
             AsyncImage(url: viewModel.state.tierImageUrl) { $0.resizable() } placeholder: { Color.darkishPink }
-            .frame(width: 64, height: 64, alignment: .topLeading)
-            .clipShape(RoundedRectangle(cornerRadius: 32))
-            .foregroundColor(.black)
+            .frame(width: 55, height: 55, alignment: .topLeading)
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(viewModel.state.rankType)
-                    .font(.system(size: 12))
+                    .font(.system(size: 11))
                     .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
                     .foregroundColor(.blue42)
                     .background(Color.blue237)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                 
                 Text(viewModel.state.tier)
-                    .font(.system(size: 18))
+                    .font(.system(size: 15))
                     .foregroundColor(.grey26)
                     .bold()
                 
                 let lpText = viewModel.state.lp.currency()
                 Text("\(lpText) LP")
-                    .font(.system(size: 12))
+                    .font(.system(size: 11))
                     .foregroundColor(.grey103)
                     .bold()
                 

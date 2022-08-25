@@ -232,9 +232,9 @@
 		E05164B428B7660000E5120D /* LeagueStatsView */ = {
 			isa = PBXGroup;
 			children = (
+				E05164B728B7660000E5120D /* View */,
 				E05164B528B7660000E5120D /* LeagueStatsViewModel.swift */,
 				E05164B628B7660000E5120D /* LeagueStatsView.swift */,
-				E05164B728B7660000E5120D /* View */,
 			);
 			path = LeagueStatsView;
 			sourceTree = "<group>";
