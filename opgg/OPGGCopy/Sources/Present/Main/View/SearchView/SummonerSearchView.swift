@@ -10,7 +10,7 @@ import SwiftUI
 struct SummonerSearchView: View {
     @ObservedObject var viewModel = SummonerSearchViewModel()
     
-    @State private var searchText = ""
+    @State private var searchText = "신싱하"
     
     init(_ viewModel: SummonerSearchViewModel) {
         self.viewModel = viewModel

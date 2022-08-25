@@ -20,4 +20,10 @@ final class OpggRepositoryImpl: NetworkRepository<OpggTarget>, OpggRepository {
             .request(.requestSummonerDetail(id: summonerId))
             .map(SummonerDetailData.self)
     }
+    
+    func requestGameInfos(_ summonerId: String) -> AnyPublisher<Result<GameInfos, APIError>, Never> {
+        provider
+            .request(.requestGameInfos(id: summonerId))
+            .map(GameInfos.self)
+    }
 }

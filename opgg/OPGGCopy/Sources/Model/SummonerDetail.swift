@@ -123,6 +123,7 @@ struct QueueInfo: Decodable {
 enum GameType: String, Decodable {
     case soloRanked = "SOLORANKED"
     case flexRanked = "FLEXRANKED"
+    case aram = "ARAM"
 }
 
 struct TiersImage: Decodable {

@@ -21,6 +21,7 @@ final class DetailViewModel: ObservableObject {
         let topView = DetailTopViewModel()
         let prevSeasons = PreviousSeasonsViewModel()
         let leagueStats = LeagueStatsViewModel()
+        let summary = SummaryViewModel()
     }
     
     @Published var state = State()
@@ -73,6 +74,8 @@ final class DetailViewModel: ObservableObject {
             .map { $0.leagueStats }
             .sink(receiveValue: viewModels.leagueStats.update.leagueStats.send(_:))
             .store(in: &cancellable)
+        
+        let requestGameData =
         
         requestDetail
             .compactMap { $0.error }

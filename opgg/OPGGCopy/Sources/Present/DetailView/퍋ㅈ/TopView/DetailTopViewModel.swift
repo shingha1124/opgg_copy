@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import UIKit
 
 final class DetailTopViewModel: ObservableObject {
     
@@ -14,6 +15,7 @@ final class DetailTopViewModel: ObservableObject {
         var imageUrl: URL?
         var name = ""
         var rank = ""
+        var level = 0
     }
     
     struct Update {
@@ -50,6 +52,13 @@ final class DetailTopViewModel: ObservableObject {
             }
             .sink(receiveValue: { [unowned self] rank in
                 self.state.rank = rank
+            })
+            .store(in: &cancellable)
+        
+        update.summonerDetail
+            .map { $0.level }
+            .sink(receiveValue: { [unowned self] level in
+                self.state.level = level
             })
             .store(in: &cancellable)
     }

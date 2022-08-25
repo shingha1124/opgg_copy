@@ -11,6 +11,7 @@ import Foundation
 enum OpggTarget {
     case requestSummonerSearch(name: String)
     case requestSummonerDetail(id: String)
+    case requestGameInfos(id: String)
 }
 extension OpggTarget: BaseTarget {
     var path: String {
@@ -19,6 +20,8 @@ extension OpggTarget: BaseTarget {
             return "/api/summoners/kr/autocomplete"
         case .requestSummonerDetail(let id):
             return "/api/summoners/kr/\(id)"
+        case .requestGameInfos(let id):
+            return "/api/games/kr/summoners/\(id)"
         }
     }
     
@@ -28,12 +31,14 @@ extension OpggTarget: BaseTarget {
             return ["keyword": searchText]
         case .requestSummonerDetail:
             return ["hl": "ko_KR"]
+        case .requestGameInfos:
+            return ["hl": "ko_KR", "game_type": "TOTAL"]
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .requestSummonerSearch, .requestSummonerDetail:
+        case .requestSummonerSearch, .requestSummonerDetail, .requestGameInfos:
             return .get
         }
     }

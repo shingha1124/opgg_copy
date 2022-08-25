@@ -22,6 +22,14 @@ struct WinRate {
             rate = Int((Float(wins) / Float(totalGame)) * 100)
         }
     }
+    
+    var text: String {
+        let winLocalize = LocalizedStringKey.Keys.winCount.value
+        let winText = String(format: winLocalize, wins)
+        let lossesLocalize = LocalizedStringKey.Keys.lossesCount.value
+        let lossesText = String(format: lossesLocalize, losses)
+        return "\(winText) \(lossesText)"
+    }
 }
 
 extension WinRate {

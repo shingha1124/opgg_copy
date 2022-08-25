@@ -8,14 +8,28 @@
 import SwiftUI
 
 extension Color {
+    static let grey26 = color(r: 26, g: 29, b: 32)
+    static let grey44 = color(r: 44, g: 50, b: 56)
+    static let grey83 = color(r: 83, g: 93, b: 103)
+    static let grey103 = color(r: 103, g: 115, b: 127)
+    static let grey130 = color(r: 130, g: 142, b: 155)
+    static let grey224 = color(r: 224, g: 230, b: 247)
+    
+    static let blue42 = color(r: 42, g: 97, b: 241)
+    static let blue67 = color(r: 67, g: 118, b: 248)
+    static let blue237 = color(r: 237, g: 242, b: 254)
+    
+    static let white243 = color(r: 243, g: 245, b: 247)
+    
+    
+    
+    
     static let greenBlue = color(r: 10, g: 197, b: 142)
     static let darkishPink = color(r: 232, g: 64, b: 87)
     static let orangeYellow = color(r: 255, g: 169, b: 5)
     static let periwinkle = color(r: 139, g: 104, b: 255)
     static let softBlue = color(r: 83, g: 131, b: 232)
     
-    static let blue1 = color(r: 42, g: 97, b: 241)
-    static let blue2 = color(r: 67, g: 118, b: 248)
     
     static let darkgrey = color(r: 30, g: 32, b: 34)
     static let charcoalGrey = color(r: 51, g: 56, b: 60)

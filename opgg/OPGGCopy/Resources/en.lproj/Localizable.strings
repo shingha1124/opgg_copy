@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  OPGGCopy
+
+  Created by seongha shin on 2022/08/25.
+  
+*/
+
+"ladderRankPrefix" = "Ladder Rank ";
+"ladderRankSuffix" = "";
+
+"update" = "Update";
+"inGame" = "InGame";
+
+"win" = "W";
+"losses" = "L";
+"winCount" = "%lldW";
+"lossesCount" = "%dL";

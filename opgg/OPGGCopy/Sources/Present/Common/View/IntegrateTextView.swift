@@ -11,6 +11,18 @@ struct ParsedText {
     var text: String = ""
     var color: UIColor = .black
     var font: UIFont = .systemFont(ofSize: 10, weight: .regular)
+    
+    init(text: String, color: UIColor, font: UIFont) {
+        self.text = text
+        self.color = color
+        self.font = font
+    }
+    
+    init(key: LocalizedStringKey, color: UIColor, font: UIFont) {
+        self.text = key.value
+        self.color = color
+        self.font = font
+    }
 }
 
 struct IntegrateTextView: UIViewRepresentable {

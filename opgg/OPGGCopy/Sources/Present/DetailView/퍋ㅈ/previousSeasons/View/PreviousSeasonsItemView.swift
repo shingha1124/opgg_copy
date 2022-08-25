@@ -20,19 +20,19 @@ struct PreviousSeasonsItemView: View {
             Text(viewModel.state.season)
                 .font(.system(size: 10))
                 .bold()
-                .foregroundColor(.coolGrey)
+                .foregroundColor(.grey103)
             
             Text(viewModel.state.tier)
                 .font(.system(size: 10))
-                .foregroundColor(.coolGrey)
+                .foregroundColor(.grey103)
             
             Text("\(viewModel.state.division ?? 0)")
                 .font(.system(size: 10))
-                .foregroundColor(.coolGrey)
+                .foregroundColor(.grey103)
                 .visibility(viewModel.state.division == nil ? .gone : .visible)
         }
         .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
-        .background(Color.charcoalGrey)
+        .background(Color.grey224)
         .clipShape(RoundedRectangle(cornerRadius: 5))
     }
 }

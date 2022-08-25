@@ -13,7 +13,7 @@ struct DetailView: View {
     private let topView: DetailTopView
     private let prevSeasonsView: PreviousSeasonsView
     private let leagueStatsView: LeagueStatsView
-    private let navigationConfigurator: NavigationConfigurator
+    private let summaryView: SummaryView
     
     @State var navbarBackgroundAlpha: CGFloat = 0
     
@@ -22,7 +22,7 @@ struct DetailView: View {
         topView = DetailTopView(viewModel.viewModels.topView)
         prevSeasonsView = PreviousSeasonsView(viewModel.viewModels.prevSeasons)
         leagueStatsView = LeagueStatsView(viewModel.viewModels.leagueStats)
-        navigationConfigurator = NavigationConfigurator()
+        summaryView = SummaryView(viewModel.viewModels.summary)
     }
     
     var body: some View {
@@ -40,13 +40,16 @@ struct DetailView: View {
                 
                 LazyVStack(alignment: .leading, spacing: 0) {
                     topView
-                    Group {
+                    VStack(spacing: 0) {
                         prevSeasonsView
+                            .padding(.bottom, 20)
                         leagueStatsView
+                            .padding(.bottom, 10)
+                        summaryView
                     }
-                    .background(Color.systemBackground2)
+                    .padding(.vertical, 20)
+                    .background(Color.white)
                 }
-                .padding(.top, 70)
             }
             .coordinateSpace(name: "ScrollViewOrigin")
             .onPreferenceChange(OffsetPreferenceKey.self) { offset in
@@ -55,6 +58,7 @@ struct DetailView: View {
                 navbarAlpha = min(navbarAlpha, 1)
                 navbarBackgroundAlpha = navbarAlpha
             }
+            .background(Color.white243)
         }
         .navigationBarHidden(true)
         .safeAreaInset(edge: .top) {
@@ -64,12 +68,12 @@ struct DetailView: View {
                         presentation.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "chevron.backward")
-                            .foregroundColor(.liner(from: .white, to: .blue2, value: navbarBackgroundAlpha))
+                            .foregroundColor(.liner(from: .white, to: .blue67, value: navbarBackgroundAlpha))
                     }
                 }, center: {
                     Text(viewModel.state.summonerName)
                         .font(.system(size: 19).weight(.bold))
-                        .foregroundColor(.systemDarkgrey.opacity(navbarBackgroundAlpha))
+                        .foregroundColor(.white.opacity(navbarBackgroundAlpha))
                 }, right: {
                     Text("3")
                         .font(.system(size: 19).weight(.bold))

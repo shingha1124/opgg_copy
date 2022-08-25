@@ -26,30 +26,30 @@ struct LeagueStatsItemView: View {
                 Text(viewModel.state.rankType)
                     .font(.system(size: 12))
                     .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
-                    .foregroundColor(.blue2)
-                    .background(Color.blue2.opacity(0.3))
+                    .foregroundColor(.blue42)
+                    .background(Color.blue237)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                 
                 Text(viewModel.state.tier)
                     .font(.system(size: 18))
-                    .foregroundColor(.systemDarkgrey)
+                    .foregroundColor(.grey26)
                     .bold()
                 
                 let lpText = viewModel.state.lp.currency()
                 Text("\(lpText) LP")
                     .font(.system(size: 12))
-                    .foregroundColor(.steelGrey)
+                    .foregroundColor(.grey103)
                     .bold()
                 
                 HStack(spacing: 3) {
                     let winRate = viewModel.state.winRate
-                    Text("\(winRate.wins)승 \(winRate.losses)패")
+                    Text(winRate.text)
                         .font(.system(size: 10))
-                        .foregroundColor(.steelGrey)
+                        .foregroundColor(.grey103)
                     
                     Text("(\(winRate.rate)%)")
                         .font(.system(size: 10))
-                        .foregroundColor(.steelGrey)
+                        .foregroundColor(.grey103)
                 }
             }
             Spacer()
@@ -57,7 +57,7 @@ struct LeagueStatsItemView: View {
         .padding(EdgeInsets(top: 16, leading: 12, bottom: 16, trailing: 12))
         .overlay {
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.charcoalGrey, lineWidth: 1)
+                .stroke(Color.grey224, lineWidth: 1)
         }
     }
 }

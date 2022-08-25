@@ -17,10 +17,8 @@ struct SearchSummonerListView: View {
     var body: some View {
         VStack(alignment: .leading) {
             let items = viewModel.state.items
-            
             ForEach(Array(zip(items.indices, items)), id: \.0) { index, itemViewModel in
                 NavigationLink(destination: {
-                    let viewModel = DetailViewModel(itemViewModel.state.summonerId)
                     NavigationLazyView(DetailView(DetailViewModel(itemViewModel.state.summonerId)))
                 }, label: {
                     SearchSummonerCellView(itemViewModel)

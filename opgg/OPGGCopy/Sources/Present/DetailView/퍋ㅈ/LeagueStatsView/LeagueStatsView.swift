@@ -21,12 +21,11 @@ struct LeagueStatsView: View {
             HStack {
                 ForEach(viewModel.state.items) { item in
                     LeagueStatsItemView(item)
-                        .frame(width: screenSize.width - 48)
+                        .frame(width: screenSize.width - 100)
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 48 - 16))
+            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 100 - 16))
         }
-        .padding([.vertical], 16)
     }
 }
 
