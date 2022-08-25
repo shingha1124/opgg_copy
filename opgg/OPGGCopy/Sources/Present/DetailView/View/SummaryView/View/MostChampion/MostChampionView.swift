@@ -16,27 +16,34 @@ struct MostChampionView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading) {
             Text(.Keys.mostChamionTitle)
                 .font(.system(size: 12).weight(.semibold))
                 .foregroundColor(.black)
+            
             Spacer()
             
-            HStack {
+            HStack(spacing: 0) {
                 let url = viewModel.state.champImageUrl
                 AsyncImage(url: url, content: { $0.resizable() }, placeholder: { Color.grey130 })
-                    .frame(width: 40, height: 40)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .frame(width: 35, height: 35)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
                 
-                VStack(alignment: .leading, spacing: 5) {
+                Spacer().frame(width: 4)
+                
+                VStack(alignment: .leading) {
                     Text(viewModel.state.champName)
                         .foregroundColor(.grey26)
-                        .font(.system(size: 12))
+                        .font(.system(size: 11))
                     
                     Text(String.localized(.Keys.playCountSuffix, args: [viewModel.state.playCount]))
                         .foregroundColor(.grey103)
-                        .font(.system(size: 12))
+                        .font(.system(size: 11))
                 }
+                
+                Image(systemName: "chevron.right")
+                    .frame(width: 35, height: 35)
+                    .foregroundColor(.grey130)
             }
         }
         .padding(EdgeInsets(top: 16, leading: 12, bottom: 16, trailing: 12))
