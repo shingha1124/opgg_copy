@@ -17,12 +17,14 @@ struct LeagueStatsView: View {
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack {
+            let screenSize = UIScreen.main.bounds.size
+            HStack {
                 ForEach(viewModel.state.items) { item in
                     LeagueStatsItemView(item)
+                        .frame(width: screenSize.width - 48)
                 }
             }
-            .padding([.horizontal], 16)
+            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 48 - 16))
         }
         .padding([.vertical], 16)
     }

@@ -17,7 +17,7 @@ protocol BaseTarget {
 
 extension BaseTarget {
     var baseURL: URL? {
-        URL(string: "https://www.op.gg/api")
+        URL(string: "https://www.op.gg")
     }
 
     var headers: [String: String]? {

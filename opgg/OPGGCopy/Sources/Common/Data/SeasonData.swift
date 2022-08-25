@@ -16,6 +16,6 @@ final class SeasonData {
     }
     
     subscript(_ id: Int) -> Season? {
-        return data[String(id)]
+        data[String(id)]
     }
 }

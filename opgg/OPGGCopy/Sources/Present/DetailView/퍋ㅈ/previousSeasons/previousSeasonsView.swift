@@ -25,6 +25,7 @@ struct PreviousSeasonsView: View {
             .padding([.horizontal], 16)
         }
         .padding([.vertical], 16)
+        .visibility(viewModel.state.items.isEmpty ? .gone : .visible)
     }
 }
 

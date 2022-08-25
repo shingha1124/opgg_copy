@@ -13,11 +13,13 @@ struct MainView: View {
     @ObservedObject var viewModel: MainViewModel
     
     private let searchView: SummonerSearchView
+    private let searchListView: SearchSummonerListView
     
     init() {
         let viewModel = MainViewModel()
         self.viewModel = viewModel
         searchView = SummonerSearchView(viewModel.viewModels.searchSummoner)
+        searchListView = SearchSummonerListView(viewModel.viewModels.searchList)
     }
     
     var body: some View {
@@ -27,7 +29,7 @@ struct MainView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     searchView
                     
-                    SearchSummonerListView(summoners: $viewModel.state.searchSummoner)
+                    searchListView
                         .visibility(viewModel.state.searchListVisibilty)
                     
                     Spacer()
@@ -39,6 +41,7 @@ struct MainView: View {
         .background(Color.systemBackground2)
         .navigationBarHidden(true)
         .preferredColorScheme(.dark)
+        .navigationTitle("")
     }
 }
 

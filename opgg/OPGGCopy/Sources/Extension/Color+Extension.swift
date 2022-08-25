@@ -14,6 +14,9 @@ extension Color {
     static let periwinkle = color(r: 139, g: 104, b: 255)
     static let softBlue = color(r: 83, g: 131, b: 232)
     
+    static let blue1 = color(r: 42, g: 97, b: 241)
+    static let blue2 = color(r: 67, g: 118, b: 248)
+    
     static let darkgrey = color(r: 30, g: 32, b: 34)
     static let charcoalGrey = color(r: 51, g: 56, b: 60)
     static let gunmetal = color(r: 82, g: 89, b: 95)
@@ -34,5 +37,30 @@ extension Color {
     
     var uiColor: UIColor {
         UIColor(self)
+    }
+    
+    static func liner(from: Color, to: Color, value: CGFloat) -> Color {
+        let fromColor = from.components
+        let toColor = to.components
+        
+        let r: CGFloat = fromColor.red * (1.0 - value) + toColor.red * value
+        let g: CGFloat = fromColor.green * (1.0 - value) + toColor.green * value
+        let b: CGFloat = fromColor.blue * (1.0 - value) + toColor.blue * value
+        let o: CGFloat = fromColor.opacity * (1.0 - value) + toColor.opacity * value
+        
+        return Color(.sRGB, red: r, green: g, blue: b, opacity: o)
+    }
+    
+    var components: (red: CGFloat, green: CGFloat, blue: CGFloat, opacity: CGFloat) {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var o: CGFloat = 0
+
+        guard UIColor(self).getRed(&r, green: &g, blue: &b, alpha: &o) else {
+            return (0, 0, 0, 0)
+        }
+
+        return (r, g, b, o)
     }
 }

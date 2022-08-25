@@ -9,29 +9,23 @@ import Combine
 
 final class MainViewModel: ObservableObject {
     struct State {
-        var searchSummoner: [SearchSummonerCellViewModel] = []
         var searchListVisibilty: ViewVisibility = .gone
     }
     
     struct ViewModels {
-        let searchSummoner: SummonerSearchViewModel
+        let searchSummoner = SummonerSearchViewModel()
+        let searchList = SearchSummonerListViewModel()
     }
     
-    let viewModels: ViewModels
+    let viewModels = ViewModels()
     @Published var state = State()
     @Inject(\.opggRepository) private var opggRepository: OpggRepository
     
     private var cancellable = Set<AnyCancellable>()
     
     init() {
-        let searchViewModel = SummonerSearchViewModel()
-        viewModels = ViewModels(searchSummoner: searchViewModel)
-        
-        let requestSearchSummoner = searchViewModel.state.searchText
+        let requestSearchSummoner = viewModels.searchSummoner.state.searchText
             .filter { !$0.isEmpty }
-            .handleEvents(receiveOutput: {
-                print($0)
-            })
             .flatMap { [unowned self] name in
                 self.opggRepository.requestSearchSummoner(name)
             }
@@ -41,14 +35,8 @@ final class MainViewModel: ObservableObject {
             .compactMap { $0.value?.data }
             .share()
         
-        let searchListViewModels = successSummoners
-            .map { $0.map { SearchSummonerCellViewModel($0) } }
-            .share()
-        
-        searchListViewModels
-            .sink { [unowned self] summoners in
-                self.state.searchSummoner = summoners
-            }
+        successSummoners
+            .sink(receiveValue: viewModels.searchList.update.summoners.send(_:))
             .store(in: &cancellable)
         
         requestSearchSummoner
@@ -59,7 +47,7 @@ final class MainViewModel: ObservableObject {
             .store(in: &cancellable)
         
         Publishers.Merge(
-            searchViewModel.state.searchText.map { !$0.isEmpty },
+            viewModels.searchSummoner.state.searchText.map { !$0.isEmpty },
             successSummoners.map { !$0.isEmpty }
         )
         .map { $0 ? .visible : .gone }

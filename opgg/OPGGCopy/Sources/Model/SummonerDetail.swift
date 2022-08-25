@@ -29,16 +29,14 @@ struct SummonerDetail: Decodable {
 //    let championsByID: [String: ChampionsByID]
     let seasonsByID: [String: Season]
 //    let seasons: [Season]
-//    let tiersImageData: [TiersImageDatum]
+    let tiersImageData: [TiersImage]
     
     enum CodingKeys: String, CodingKey {
-        case id
+        case id, puuid, name, level, tiersImageData
         case summonerID = "summoner_id"
         case acctID = "acct_id"
-        case puuid, name
         case internalName = "internal_name"
         case profileImageURL = "profile_image_url"
-        case level
         case updatedAt = "updated_at"
         case renewableAt = "renewable_at"
 //        case teamInfo = "team_info"
@@ -125,4 +123,16 @@ struct QueueInfo: Decodable {
 enum GameType: String, Decodable {
     case soloRanked = "SOLORANKED"
     case flexRanked = "FLEXRANKED"
+}
+
+struct TiersImage: Decodable {
+    let tier: Tier
+    let tierImageURL, borderImageURL, tierMiniImageURL: URL
+
+    enum CodingKeys: String, CodingKey {
+        case tier = "name"
+        case tierImageURL = "tier_image_url"
+        case borderImageURL = "border_image_url"
+        case tierMiniImageURL = "tier_mini_image_url"
+    }
 }

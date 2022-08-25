@@ -12,14 +12,13 @@ enum OpggTarget {
     case requestSummonerSearch(name: String)
     case requestSummonerDetail(id: String)
 }
-
 extension OpggTarget: BaseTarget {
     var path: String {
         switch self {
         case .requestSummonerSearch:
-            return "/summoners/kr/autocomplete"
+            return "/api/summoners/kr/autocomplete"
         case .requestSummonerDetail(let id):
-            return "/summoners/kr/\(id)"
+            return "/api/summoners/kr/\(id)"
         }
     }
     

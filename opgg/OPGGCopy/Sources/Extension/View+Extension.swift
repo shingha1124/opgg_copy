@@ -22,3 +22,4 @@ extension View {
 enum ViewVisibility: CaseIterable {
     case visible, invisible, gone
 }
+

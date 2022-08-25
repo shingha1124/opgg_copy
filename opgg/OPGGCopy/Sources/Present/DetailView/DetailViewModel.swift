@@ -13,12 +13,17 @@ final class DetailViewModel: ObservableObject {
         var onAppear = PassthroughSubject<Void, Never>()
     }
     
+    struct State {
+        var summonerName = ""
+    }
+    
     struct ViewModels {
-        let info = SummonerInfoViewModel()
+        let topView = DetailTopViewModel()
         let prevSeasons = PreviousSeasonsViewModel()
         let leagueStats = LeagueStatsViewModel()
     }
     
+    @Published var state = State()
     let action = Action()
     let viewModels = ViewModels()
     
@@ -26,6 +31,11 @@ final class DetailViewModel: ObservableObject {
     
     @Inject(\.opggRepository) private var opggRepository: OpggRepository
     @Inject(\.seasonData) private var seasonData: SeasonData
+    @Inject(\.tierImageData) private var tierImageData: TierImageData
+    
+    deinit {
+        print("Deinit DetailViewModel")
+    }
     
     init(_ summonerId: String) {
         let requestDetail = action.onAppear
@@ -39,11 +49,19 @@ final class DetailViewModel: ObservableObject {
             .compactMap { $0.value?.data }
             .handleEvents(receiveOutput: { [unowned self] data in
                 self.seasonData.updateData(data.seasonsByID)
+                self.tierImageData.updateData(data.tiersImageData)
             })
             .share()
         
         successRequestDetail
-            .sink(receiveValue: viewModels.info.update.summonerDetail.send(_:))
+            .map { $0.name }
+            .sink(receiveValue: { [unowned self] name in
+                self.state.summonerName = name
+            })
+            .store(in: &cancellable)
+        
+        successRequestDetail
+            .sink(receiveValue: viewModels.topView.update.summonerDetail.send(_:))
             .store(in: &cancellable)
         
         successRequestDetail

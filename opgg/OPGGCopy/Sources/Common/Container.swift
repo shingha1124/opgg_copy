@@ -14,4 +14,5 @@ class Container {
     
     let opggRepository: OpggRepository = OpggRepositoryImpl()
     let seasonData = SeasonData()
+    let tierImageData = TierImageData()
 }

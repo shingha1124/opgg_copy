@@ -8,19 +8,27 @@
 import SwiftUI
 
 struct SearchSummonerListView: View {
-    @Binding var summoners: [SearchSummonerCellViewModel]
+    @ObservedObject private var viewModel: SearchSummonerListViewModel
+    
+    init(_ viewModel: SearchSummonerListViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
-        LazyVStack(alignment: .leading) {
-            ForEach($summoners) { viewModel in
-                let detailViewModel = DetailViewModel(viewModel.state.summonerId.wrappedValue)
-                NavigationLink(destination: DetailView(detailViewModel)) {
-                    SearchSummonerCellView(viewModel.wrappedValue)
-                    if let last = summoners.last?.state.name,
-                       last != viewModel.wrappedValue.state.name {
+        VStack(alignment: .leading) {
+            let items = viewModel.state.items
+            
+            ForEach(Array(zip(items.indices, items)), id: \.0) { index, itemViewModel in
+                NavigationLink(destination: {
+                    let viewModel = DetailViewModel(itemViewModel.state.summonerId)
+                    NavigationLazyView(DetailView(DetailViewModel(itemViewModel.state.summonerId)))
+                }, label: {
+                    SearchSummonerCellView(itemViewModel)
+                    
+                    if index != items.count - 1 {
                         Divider()
                     }
-                }
+                })
             }
         }
         .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
@@ -30,6 +38,6 @@ struct SearchSummonerListView: View {
 
 struct SearchSummonerListView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchSummonerListView(summoners: .constant([]))
+        SearchSummonerListView(SearchSummonerListViewModel())
     }
 }

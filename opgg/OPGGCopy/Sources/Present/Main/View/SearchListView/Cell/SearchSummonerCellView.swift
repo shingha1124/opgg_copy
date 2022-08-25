@@ -37,6 +37,11 @@ struct SearchSummonerCellView: View {
             Spacer()
         }
         .contentShape(Rectangle())
+        .overlay(
+            Button(action: {
+                viewModel.action.tappedItem.send(())
+            }, label: { })
+        )
     }
 }
 

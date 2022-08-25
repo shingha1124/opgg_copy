@@ -11,9 +11,11 @@ import SwiftUI
 struct OPGGCopyApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            CustomNavigationView {
                 MainView()
             }
+            .edgesIgnoringSafeArea(.top)
+            .edgesIgnoringSafeArea(.bottom)
         }
     }
 }
