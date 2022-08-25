@@ -39,6 +39,8 @@
 		E0BD810A28B7333D0018D047 /* SummaryLastGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BD810928B7333D0018D047 /* SummaryLastGameViewModel.swift */; };
 		E0BD810C28B73A4C0018D047 /* GameInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BD810B28B73A4C0018D047 /* GameInfos.swift */; };
 		E0BD810E28B744620018D047 /* GameSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BD810D28B744620018D047 /* GameSummary.swift */; };
+		E0D7A14A28B7814300DA4229 /* PlayedWithViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A14928B7814300DA4229 /* PlayedWithViewModel.swift */; };
+		E0D7A14C28B7814A00DA4229 /* PlayedWithView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A14B28B7814A00DA4229 /* PlayedWithView.swift */; };
 		E0DF4F4528B1FBB700D457E6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF4F4428B1FBB700D457E6 /* Color+Extension.swift */; };
 		E0DF4F4728B1FBCA00D457E6 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0DF4F4628B1FBCA00D457E6 /* Colors.xcassets */; };
 		E0DF4F4B28B1FEEE00D457E6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF4F4A28B1FEEE00D457E6 /* MainViewModel.swift */; };
@@ -111,6 +113,8 @@
 		E0BD810928B7333D0018D047 /* SummaryLastGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryLastGameViewModel.swift; sourceTree = "<group>"; };
 		E0BD810B28B73A4C0018D047 /* GameInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfos.swift; sourceTree = "<group>"; };
 		E0BD810D28B744620018D047 /* GameSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSummary.swift; sourceTree = "<group>"; };
+		E0D7A14928B7814300DA4229 /* PlayedWithViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedWithViewModel.swift; sourceTree = "<group>"; };
+		E0D7A14B28B7814A00DA4229 /* PlayedWithView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedWithView.swift; sourceTree = "<group>"; };
 		E0DF4F4428B1FBB700D457E6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		E0DF4F4628B1FBCA00D457E6 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E0DF4F4A28B1FEEE00D457E6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -186,7 +190,6 @@
 				E05164A828B7660000E5120D /* PreviousSeasons */,
 				E05164B428B7660000E5120D /* LeagueStatsView */,
 				E0BD810128B732470018D047 /* SummaryView */,
-				E05164D828B77BCD00E5120D /* PlayedWithView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -269,6 +272,8 @@
 		E05164D828B77BCD00E5120D /* PlayedWithView */ = {
 			isa = PBXGroup;
 			children = (
+				E0D7A14928B7814300DA4229 /* PlayedWithViewModel.swift */,
+				E0D7A14B28B7814A00DA4229 /* PlayedWithView.swift */,
 			);
 			path = PlayedWithView;
 			sourceTree = "<group>";
@@ -319,8 +324,9 @@
 		E0BD810628B7330D0018D047 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E05164D128B7667600E5120D /* MostChampion */,
 				E05164D028B7666D00E5120D /* LastGame */,
+				E05164D128B7667600E5120D /* MostChampion */,
+				E05164D828B77BCD00E5120D /* PlayedWithView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -698,6 +704,7 @@
 				E05164C128B7660000E5120D /* DetailTopButtons.swift in Sources */,
 				E0DF4FA128B3A00200D457E6 /* PreviewMockData.swift in Sources */,
 				E0DF4F7C28B29D0E00D457E6 /* SearchSummonerListView.swift in Sources */,
+				E0D7A14C28B7814A00DA4229 /* PlayedWithView.swift in Sources */,
 				E0DF4F6928B2699100D457E6 /* OpggRepository.swift in Sources */,
 				E0DF4F7028B26EE900D457E6 /* Inject.swift in Sources */,
 				E0BD810A28B7333D0018D047 /* SummaryLastGameViewModel.swift in Sources */,
@@ -741,6 +748,7 @@
 				E0DF4F9528B38D4F00D457E6 /* IntegrateTextView.swift in Sources */,
 				E0DF4F7428B299D000D457E6 /* Result+Extension.swift in Sources */,
 				E05164BF28B7660000E5120D /* DetailTopView.swift in Sources */,
+				E0D7A14A28B7814300DA4229 /* PlayedWithViewModel.swift in Sources */,
 				E0DF4F5C28B2677000D457E6 /* APIError.swift in Sources */,
 				E0A2E88428B4CBED001F7D46 /* WinRate.swift in Sources */,
 				E0BD810328B732730018D047 /* SummaryViewModel.swift in Sources */,

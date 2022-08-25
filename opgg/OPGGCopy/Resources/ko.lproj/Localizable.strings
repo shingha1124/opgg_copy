@@ -11,6 +11,7 @@
 
 "summaryTitle" = "최근 %d경기\n요약 정보";
 "mostChamionTitle" = "Champscore고처";
+"playedWithTitle" = "같이 게임한 소환사들";
 
 "update" = "전적 갱신";
 "inGame" = "인게임";

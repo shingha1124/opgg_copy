@@ -20,8 +20,10 @@ extension LocalizedStringKey {
         static let lossesCount = LocalizedStringKey("lossesCount")
         static let winRatePrefix = LocalizedStringKey("winRatePrefix")
         static let summaryTitle = LocalizedStringKey("summaryTitle")
+        
         static let mostChamionTitle = LocalizedStringKey("mostChamionTitle")
         static let playCountSuffix = LocalizedStringKey("playCountSuffix")
+        static let playedWithTitle = LocalizedStringKey("playedWithTitle")
     }
 }
 

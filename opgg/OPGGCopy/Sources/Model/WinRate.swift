@@ -10,7 +10,10 @@ import SwiftUI
 struct WinRate {
     let wins: Int
     let losses: Int
-    let rate: Int
+    let rate: Float
+    var total: Int {
+        wins + losses
+    }
     
     init(wins: Int, losses: Int) {
         self.wins = wins
@@ -19,7 +22,7 @@ struct WinRate {
         if wins == 0 || totalGame == 0 {
             rate = 0
         } else {
-            rate = Int((Float(wins) / Float(totalGame)) * 100)
+            rate = (Float(wins) / Float(totalGame)) * 100
         }
     }
     

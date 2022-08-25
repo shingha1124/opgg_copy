@@ -11,6 +11,7 @@
 
 "summaryTitle" = "Summary\nlast %d games.";
 "mostChamionTitle" = "Champscore";
+"playedWithTitle" = "Played with";
 
 "update" = "Update";
 "inGame" = "InGame";
@@ -22,3 +23,4 @@
 "winRatePrefix" = "Win ";
 
 "playCountSuffix" = "%d Game";
+

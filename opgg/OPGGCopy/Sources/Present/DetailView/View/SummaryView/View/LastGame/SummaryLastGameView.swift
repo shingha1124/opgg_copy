@@ -18,7 +18,7 @@ struct SummaryLastGameView: View {
     var body: some View { 
         let summary = viewModel.state.gameSummary
         VStack(alignment: .leading, spacing: 4) {
-            Text(String.localized(.Keys.summaryTitle, args: [summary.totalGameCount]))
+            Text(String.localized(.Keys.summaryTitle, args: [summary.winRate.total]))
                 .font(.system(size: 12).weight(.semibold))
                 .foregroundColor(.black)
             Spacer().frame(height: 5)
@@ -35,17 +35,12 @@ struct SummaryLastGameView: View {
                 font: .systemFont(ofSize: 13))
 
             let winRate = ParsedText(
-                text: "\(summary.winRate)%",
-                color: Color.grey26.uiColor,
+                text: String(format: "%.0f", summary.winRate.rate) + "%",
+                color: summary.winRate.rateColor.uiColor,
                 font: .systemFont(ofSize: 13, weight: .bold))
-
-            let suffix = ParsedText(
-                text: "%",
-                color: Color.grey26.uiColor,
-                font: .systemFont(ofSize: 13))
             
             IntegrateTextView(parsedTextList: [
-                prefix, winRate, suffix
+                prefix, winRate
             ]).fixedSize()
             
             HStack(spacing: 0) {

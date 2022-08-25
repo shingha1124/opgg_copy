@@ -16,10 +16,7 @@ struct GameSummary {
     let assistRate: Float
     let kda: Float
     
-    let win: Int
-    let lose: Int
-    let totalGameCount: Int
-    let winRate: Int
+    let winRate: WinRate
     
     init() {
         self.kill = 0
@@ -27,10 +24,7 @@ struct GameSummary {
         self.assist = 0
         self.kda = 0
         
-        self.win = 0
-        self.lose = 0
-        self.totalGameCount = 0
-        self.winRate = 0
+        self.winRate = WinRate(wins: 0, losses: 0)
         
         self.killRate = 0
         self.deathRate = 0
@@ -45,24 +39,14 @@ struct GameSummary {
             $0.win += $1.myData.stats.result == .win ? 1 : 0
             $0.lose += $1.myData.stats.result == .lose ? 1 : 0
         }
-        
-        let totalGame = summary.win + summary.lose
-        var winRate = 0
-        if summary.win == 0 || totalGame == 0 {
-            winRate = 0
-        } else {
-            winRate = Int((Float(summary.win) / Float(totalGame)) * 100)
-        }
-        
-        self.win = summary.win
-        self.lose = summary.lose
-        self.winRate = winRate
-        self.totalGameCount = totalGame
+                
+        self.winRate = WinRate(wins: summary.win, losses: summary.lose)
         
         self.kill = summary.kill
         self.death = summary.death
         self.assist = summary.assist
         
+        let totalGame = summary.win + summary.lose
         self.killRate = Float(summary.kill) / Float(totalGame)
         self.deathRate = Float(summary.death) / Float(totalGame)
         self.assistRate = Float(summary.assist) / Float(totalGame)
@@ -73,7 +57,7 @@ struct GameSummary {
 
 extension GameSummary {
     var winRateColor: Color {
-        winRate >= 60 ? .darkishPink : .steelGrey
+        winRate.rateColor
     }
     
     var kdaRateColor: Color {

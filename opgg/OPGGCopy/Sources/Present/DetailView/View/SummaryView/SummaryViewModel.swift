@@ -13,13 +13,13 @@ final class SummaryViewModel: ObservableObject {
     }
     
     struct Update {
-        let lastGames = PassthroughSubject<[GameInfo], Never>()
-        let mostChampion = PassthroughSubject<MostChampions, Never>()
+        let summonerDetail = PassthroughSubject<PageProps, Never>()
     }
     
     struct ViewModels {
         let lastGame = SummaryLastGameViewModel()
         let mostChampion = MostChampionViewModel()
+        let playedWith = PlayedWithViewModel()
     }
     
     @Published var state = State()
@@ -28,12 +28,19 @@ final class SummaryViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     init() {
-        update.lastGames
+        update.summonerDetail
+            .map { $0.games.data }
             .sink(receiveValue: viewModels.lastGame.update.lastGames.send)
             .store(in: &cancellable)
         
-        update.mostChampion
+        update.summonerDetail
+            .map { $0.summoner.mostChampions }
             .sink(receiveValue: viewModels.mostChampion.update.mostChampion.send)
+            .store(in: &cancellable)
+        
+        update.summonerDetail
+            .map { $0.games.data }
+            .sink(receiveValue: viewModels.playedWith.update.lastGames.send)
             .store(in: &cancellable)
     }
 }

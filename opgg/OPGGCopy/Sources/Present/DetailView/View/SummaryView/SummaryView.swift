@@ -13,11 +13,13 @@ struct SummaryView: View {
     
     private let lastGameView: SummaryLastGameView
     private let mostChampionView: MostChampionView
+    private let playedWithView: PlayedWithView
     
     init(_ viewModel: SummaryViewModel) {
         self.viewModel = viewModel
         lastGameView = SummaryLastGameView(viewModel.viewModels.lastGame)
         mostChampionView = MostChampionView(viewModel.viewModels.mostChampion)
+        playedWithView = PlayedWithView(viewModel.viewModels.playedWith)
     }
     
     var body: some View {
@@ -25,6 +27,7 @@ struct SummaryView: View {
             HStack(spacing: 10) {
                 lastGameView
                 mostChampionView
+                playedWithView
             }
             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         }

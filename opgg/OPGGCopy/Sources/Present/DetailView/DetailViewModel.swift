@@ -77,14 +77,7 @@ final class DetailViewModel: ObservableObject {
             .store(in: &cancellable)
         
         successRequestDetail
-            .map { $0.summoner.mostChampions }
-            .sink(receiveValue: viewModels.summary.update.mostChampion.send)
-            .store(in: &cancellable)
-        
-        
-        successRequestDetail
-            .map { $0.games.data }
-            .sink(receiveValue: viewModels.summary.update.lastGames.send)
+            .sink(receiveValue: viewModels.summary.update.summonerDetail.send)
             .store(in: &cancellable)
         
         Publishers.MergeMany([

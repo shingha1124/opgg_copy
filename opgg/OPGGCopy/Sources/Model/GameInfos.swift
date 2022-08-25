@@ -144,11 +144,11 @@ enum GameResult: String, Codable {
 }
 
 // MARK: - Summoner
-struct Summoner: Codable {
+struct Summoner: Decodable, Hashable {
     let id: Int
     let summonerID, acctID, puuid, name: String
     let internalName: String
-    let profileImageURL: String
+    let profileImageURL: URL
     let level: Int
     let updatedAt: Date
 
