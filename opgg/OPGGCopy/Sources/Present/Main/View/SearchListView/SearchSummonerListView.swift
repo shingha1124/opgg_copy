@@ -19,7 +19,7 @@ struct SearchSummonerListView: View {
             let items = viewModel.state.items
             ForEach(Array(zip(items.indices, items)), id: \.0) { index, itemViewModel in
                 NavigationLink(destination: {
-                    NavigationLazyView(DetailView(DetailViewModel(itemViewModel.state.summonerId)))
+                    NavigationLazyView(DetailView(DetailViewModel(itemViewModel.state.summoner)))
                 }, label: {
                     SearchSummonerCellView(itemViewModel)
                     

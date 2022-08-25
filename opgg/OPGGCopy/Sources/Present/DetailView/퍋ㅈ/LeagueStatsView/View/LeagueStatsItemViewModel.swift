@@ -26,7 +26,7 @@ final class LeagueStatsItemViewModel: ObservableObject, Identifiable {
         if let tier = leagueStats.tierInfo.tier,
            let division = leagueStats.tierInfo.division,
            let lp = leagueStats.tierInfo.lp {
-            state.tierImageUrl = tierImageData[tier]?.tierImageURL
+            state.tierImageUrl = leagueStats.tierInfo.tierImageURL
             state.tier = "\(tier.name) \(division)"
             state.lp = lp
         } else {

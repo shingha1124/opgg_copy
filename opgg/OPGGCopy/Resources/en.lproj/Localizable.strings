@@ -9,6 +9,8 @@
 "ladderRankPrefix" = "Ladder Rank ";
 "ladderRankSuffix" = "";
 
+"summaryTitle" = "Summary\nlast %d games.";
+
 "update" = "Update";
 "inGame" = "InGame";
 
@@ -16,3 +18,4 @@
 "losses" = "L";
 "winCount" = "%lldW";
 "lossesCount" = "%dL";
+"winRatePrefix" = "Win ";

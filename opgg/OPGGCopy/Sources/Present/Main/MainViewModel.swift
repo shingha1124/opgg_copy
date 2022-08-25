@@ -36,7 +36,7 @@ final class MainViewModel: ObservableObject {
             .share()
         
         successSummoners
-            .sink(receiveValue: viewModels.searchList.update.summoners.send(_:))
+            .sink(receiveValue: viewModels.searchList.update.summoners.send)
             .store(in: &cancellable)
         
         requestSearchSummoner

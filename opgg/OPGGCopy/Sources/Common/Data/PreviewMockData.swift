@@ -40,7 +40,7 @@ final class PreviewMockData {
     }
     
     var detailViewModel: DetailViewModel {
-        DetailViewModel("zkDo7tkDVQsxjkwzskG9-ixLhBHvxOQgB9p9ULVcO1HmtA")
+        DetailViewModel(searchSummoner)
     }
     
     var previousSeason: PreviousSeason {

@@ -33,15 +33,5 @@ final class SearchSummonerListViewModel: ObservableObject, Identifiable {
                 self.state.items = items
             })
             .store(in: &cancellable)
-        
-//        itemViewModels
-//            .flatMap { items -> AnyPublisher<SearchSummoner, Never> in
-//                let itemViewModels = items.map { $0.state.presentDetail.eraseToAnyPublisher() }
-//                return Publishers.MergeMany(itemViewModels).eraseToAnyPublisher()
-//            }
-//            .sink(receiveValue: {
-//                print("\($0.name)")
-//            })
-//            .store(in: &cancellable)
     }
 }

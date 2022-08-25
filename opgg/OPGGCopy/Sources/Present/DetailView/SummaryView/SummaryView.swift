@@ -21,7 +21,7 @@ struct SummaryView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                Text("asdf").foregroundColor(.black)
+                lastGameView
             }
             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         }

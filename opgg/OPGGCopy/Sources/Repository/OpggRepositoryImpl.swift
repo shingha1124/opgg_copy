@@ -15,10 +15,10 @@ final class OpggRepositoryImpl: NetworkRepository<OpggTarget>, OpggRepository {
             .map(SearchSummoners.self)
     }
     
-    func requestSummonerDetail(_ summonerId: String) -> AnyPublisher<Result<SummonerDetailData, APIError>, Never> {
+    func requestSummonerDetail(_ name: String) -> AnyPublisher<Result<SummonerDetailData2, APIError>, Never> {
         provider
-            .request(.requestSummonerDetail(id: summonerId))
-            .map(SummonerDetailData.self)
+            .request(.requestSummonerDetail(name: name))
+            .map(SummonerDetailData2.self)
     }
     
     func requestGameInfos(_ summonerId: String) -> AnyPublisher<Result<GameInfos, APIError>, Never> {

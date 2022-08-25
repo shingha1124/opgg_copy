@@ -18,6 +18,8 @@ extension LocalizedStringKey {
         static let winCount = LocalizedStringKey("winCount")
         static let losses = LocalizedStringKey("losses")
         static let lossesCount = LocalizedStringKey("lossesCount")
+        static let summaryTitle = LocalizedStringKey("summaryTitle")
+        static let winRatePrefix = LocalizedStringKey("winRatePrefix")
     }
 }
 

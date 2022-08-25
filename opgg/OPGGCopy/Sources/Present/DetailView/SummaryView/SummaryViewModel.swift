@@ -13,6 +13,7 @@ final class SummaryViewModel: ObservableObject {
     }
     
     struct Update {
+        let lastGames = PassthroughSubject<[GameInfo], Never>()
     }
     
     struct ViewModels {
@@ -25,5 +26,8 @@ final class SummaryViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     init() {
+        update.lastGames
+            .sink(receiveValue: viewModels.lastGame.update.lastGames.send)
+            .store(in: &cancellable)
     }
 }

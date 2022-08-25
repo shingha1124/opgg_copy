@@ -92,10 +92,10 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            DetailView(DetailViewModel("zkDo7tkDVQsxjkwzskG9-ixLhBHvxOQgB9p9ULVcO1HmtA"))
+            DetailView(DetailViewModel(PreviewMockData.shard.searchSummoner))
                 .environment(\.colorScheme, .light)
             
-            DetailView(DetailViewModel("zkDo7tkDVQsxjkwzskG9-ixLhBHvxOQgB9p9ULVcO1HmtA"))
+            DetailView(DetailViewModel(PreviewMockData.shard.searchSummoner))
                 .environment(\.colorScheme, .dark)
         }
     }

@@ -14,6 +14,7 @@ final class SearchSummonerCellViewModel: ObservableObject, Identifiable {
     }
     
     struct State {
+        let summoner: SearchSummoner
         var profileImageURL: URL?
         var name = ""
         var tierText = ""
@@ -22,11 +23,12 @@ final class SearchSummonerCellViewModel: ObservableObject, Identifiable {
         let presentDetail = PassthroughSubject<SearchSummoner, Never>()
     }
     
-    @Published var state = State()
+    @Published var state: State
     let action = Action()
     private var cancellable = Set<AnyCancellable>()
     
     init(_ summoner: SearchSummoner) {
+        self.state = State(summoner: summoner)
         state.profileImageURL = summoner.profileImageURL
         state.name = summoner.name
         state.summonerId = summoner.summonerID
@@ -40,7 +42,7 @@ final class SearchSummonerCellViewModel: ObservableObject, Identifiable {
         
         action.tappedItem
             .map { summoner }
-            .sink(receiveValue: state.presentDetail.send(_:))
+            .sink(receiveValue: state.presentDetail.send)
             .store(in: &cancellable)
     }
 }

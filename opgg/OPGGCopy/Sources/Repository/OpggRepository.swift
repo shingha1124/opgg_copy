@@ -10,6 +10,6 @@ import Foundation
 
 protocol OpggRepository {
     func requestSearchSummoner(_ searchText: String) -> AnyPublisher<Result<SearchSummoners, APIError>, Never>
-    func requestSummonerDetail(_ summonerId: String) -> AnyPublisher<Result<SummonerDetailData, APIError>, Never>
+    func requestSummonerDetail(_ summonerId: String) -> AnyPublisher<Result<SummonerDetailData2, APIError>, Never>
     func requestGameInfos(_ summonerId: String) -> AnyPublisher<Result<GameInfos, APIError>, Never>
 }

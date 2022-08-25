@@ -22,7 +22,7 @@ final class SummonerSearchViewModel: ObservableObject {
     
     init() {
         action.changedSearchText
-            .sink(receiveValue: state.searchText.send(_:))
+            .sink(receiveValue: state.searchText.send)
             .store(in: &cancellable)
     }
 }

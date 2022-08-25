@@ -8,7 +8,7 @@
 import Foundation
 
 struct GameInfos: Decodable {
-    let data: SummonerDetail
+    let data: [GameInfo]
 }
 
 struct GameInfo: Decodable {

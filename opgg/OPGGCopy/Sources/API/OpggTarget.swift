@@ -10,7 +10,7 @@ import Foundation
 
 enum OpggTarget {
     case requestSummonerSearch(name: String)
-    case requestSummonerDetail(id: String)
+    case requestSummonerDetail(name: String)
     case requestGameInfos(id: String)
 }
 extension OpggTarget: BaseTarget {
@@ -18,8 +18,8 @@ extension OpggTarget: BaseTarget {
         switch self {
         case .requestSummonerSearch:
             return "/api/summoners/kr/autocomplete"
-        case .requestSummonerDetail(let id):
-            return "/api/summoners/kr/\(id)"
+        case .requestSummonerDetail(let name):
+            return "_next/data/qx1tV_J8eyd7sy37QyPtj/summoners/kr/\(name).json"
         case .requestGameInfos(let id):
             return "/api/games/kr/summoners/\(id)"
         }
@@ -29,8 +29,8 @@ extension OpggTarget: BaseTarget {
         switch self {
         case .requestSummonerSearch(let searchText):
             return ["keyword": searchText]
-        case .requestSummonerDetail:
-            return ["hl": "ko_KR"]
+        case .requestSummonerDetail(let name):
+            return ["region": "kr", "summoner": name]
         case .requestGameInfos:
             return ["hl": "ko_KR", "game_type": "TOTAL"]
         }
