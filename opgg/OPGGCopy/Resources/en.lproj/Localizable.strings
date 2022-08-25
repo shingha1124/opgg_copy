@@ -10,6 +10,7 @@
 "ladderRankSuffix" = "";
 
 "summaryTitle" = "Summary\nlast %d games.";
+"mostChamionTitle" = "Champscore";
 
 "update" = "Update";
 "inGame" = "InGame";
@@ -19,3 +20,5 @@
 "winCount" = "%lldW";
 "lossesCount" = "%dL";
 "winRatePrefix" = "Win ";
+
+"playCountSuffix" = "%d Game";

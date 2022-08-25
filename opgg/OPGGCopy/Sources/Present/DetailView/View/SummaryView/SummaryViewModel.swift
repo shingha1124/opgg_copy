@@ -14,10 +14,12 @@ final class SummaryViewModel: ObservableObject {
     
     struct Update {
         let lastGames = PassthroughSubject<[GameInfo], Never>()
+        let mostChampion = PassthroughSubject<MostChampions, Never>()
     }
     
     struct ViewModels {
         let lastGame = SummaryLastGameViewModel()
+        let mostChampion = MostChampionViewModel()
     }
     
     @Published var state = State()
@@ -28,6 +30,10 @@ final class SummaryViewModel: ObservableObject {
     init() {
         update.lastGames
             .sink(receiveValue: viewModels.lastGame.update.lastGames.send)
+            .store(in: &cancellable)
+        
+        update.mostChampion
+            .sink(receiveValue: viewModels.mostChampion.update.mostChampion.send)
             .store(in: &cancellable)
     }
 }

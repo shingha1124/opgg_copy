@@ -10,6 +10,7 @@
 "ladderRankSuffix" = "위";
 
 "summaryTitle" = "최근 %d경기\n요약 정보";
+"mostChamionTitle" = "Champscore고처";
 
 "update" = "전적 갱신";
 "inGame" = "인게임";
@@ -19,3 +20,5 @@
 "winCount" = "%d승";
 "lossesCount" = "%d패";
 "winRatePrefix" = "승률 ";
+
+"playCountSuffix" = "%d 게임";

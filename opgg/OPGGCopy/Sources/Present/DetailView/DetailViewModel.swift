@@ -32,7 +32,7 @@ final class DetailViewModel: ObservableObject {
     
     @Inject(\.opggRepository) private var opggRepository: OpggRepository
     @Inject(\.seasonData) private var seasonData: SeasonData
-    @Inject(\.tierImageData) private var tierImageData: TierImageData
+    @Inject(\.championData) private var championData: ChampionData
     
     deinit {
         print("Deinit DetailViewModel")
@@ -47,52 +47,48 @@ final class DetailViewModel: ObservableObject {
             .share()
         
         let successRequestDetail = requestDetail
-            .compactMap { $0.value?.pageProps.summoner }
+            .compactMap { $0.value?.pageProps }
             .handleEvents(receiveOutput: { [unowned self] data in
-                self.seasonData.updateData(data.seasons)
-//                self.tierImageData.updateData(data.tiersImageData)
+                self.seasonData.updateData(data.summoner.seasons)
+                self.championData.updateData(data.summoner.champions)
             })
             .share()
         
         successRequestDetail
-            .map { $0.name }
+            .map { $0.summoner.name }
             .sink(receiveValue: { [unowned self] name in
                 self.state.summonerName = name
             })
             .store(in: &cancellable)
         
         successRequestDetail
+            .map { $0.summoner }
             .sink(receiveValue: viewModels.topView.update.summonerDetail.send)
             .store(in: &cancellable)
         
         successRequestDetail
-            .map { $0.previousSeasons }
+            .map { $0.summoner.previousSeasons }
             .sink(receiveValue: viewModels.prevSeasons.update.previousSeasons.send)
             .store(in: &cancellable)
         
         successRequestDetail
-            .map { $0.leagueStats }
+            .map { $0.summoner.leagueStats }
             .sink(receiveValue: viewModels.leagueStats.update.leagueStats.send)
             .store(in: &cancellable)
         
-        let requestGameInfos = action.onAppear
-            .map { _ in summoner.summonerID }
-            .flatMap { [unowned self] summonerId in
-                self.opggRepository.requestGameInfos(summonerId)
-            }
-            .share()
+        successRequestDetail
+            .map { $0.summoner.mostChampions }
+            .sink(receiveValue: viewModels.summary.update.mostChampion.send)
+            .store(in: &cancellable)
         
-        let successRequestGameData = requestGameInfos
-            .compactMap { $0.value?.data }
-            .share()
         
-        successRequestGameData
+        successRequestDetail
+            .map { $0.games.data }
             .sink(receiveValue: viewModels.summary.update.lastGames.send)
             .store(in: &cancellable)
         
         Publishers.MergeMany([
-            requestDetail.compactMap { $0.error }.eraseToAnyPublisher(),
-            requestGameInfos.compactMap { $0.error }.eraseToAnyPublisher()
+            requestDetail.compactMap { $0.error }.eraseToAnyPublisher()
         ])
         .sink(receiveValue: {
             print($0)

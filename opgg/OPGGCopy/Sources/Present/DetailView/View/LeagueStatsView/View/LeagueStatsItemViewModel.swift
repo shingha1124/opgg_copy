@@ -19,7 +19,6 @@ final class LeagueStatsItemViewModel: ObservableObject, Identifiable {
     }
     
     @Published var state = State()
-    @Inject(\.tierImageData) private var tierImageData: TierImageData
     private var cancellable = Set<AnyCancellable>()
     
     init(_ leagueStats: LeagueStats) {

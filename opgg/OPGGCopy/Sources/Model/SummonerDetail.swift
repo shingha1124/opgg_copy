@@ -126,10 +126,10 @@ struct LadderRank: Decodable {
     let rank, total: Int
 }
 
-struct Champion: Codable {
+struct Champion: Decodable {
     let id: Int
     let key, name: String
-    let imageURL: String
+    let imageURL: URL
     let championDescription: String?
 
     enum CodingKeys: String, CodingKey {
@@ -139,10 +139,10 @@ struct Champion: Codable {
     }
 }
 
-struct MostChampions: Codable {
-    let gameType: String
+struct MostChampions: Decodable {
+    let gameType: GameType
     let seasonID, play, win, lose: Int
-    let championStats: [[String: Int]]
+    let championStats: [[ChampionStats: Int]]
 
     enum CodingKeys: String, CodingKey {
         case gameType = "game_type"
@@ -150,9 +150,50 @@ struct MostChampions: Codable {
         case play, win, lose
         case championStats = "champion_stats"
     }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        gameType = try container.decode(GameType.self, forKey: .gameType)
+        seasonID = try container.decode(Int.self, forKey: .seasonID)
+        play = try container.decode(Int.self, forKey: .play)
+        win = try container.decode(Int.self, forKey: .win)
+        lose = try container.decode(Int.self, forKey: .lose)
+        let stats = try container.decode([[String: Int]].self, forKey: .championStats)
+        championStats = stats.reduce(into: [[ChampionStats: Int]]()) { array, stats in
+            let keyValues = stats.reduce(into: [ChampionStats: Int]()) {
+                guard let key = ChampionStats(rawValue: $1.key) else {
+                    return
+                }
+                $0[key] = $1.value
+            }
+            array.append(keyValues)
+        }
+    }
 }
 
-struct Season: Codable {
+@frozen
+enum ChampionStats: String, Decodable {
+    case id, play, win, lose
+    case kill, death, assist
+    case goldEarned = "gold_earned"
+    case minionKill = "minion_kill"
+    case turretKill = "turret_kill"
+    case neutralMinionKill = "neutral_minion_kill"
+    case damageDealt = "damage_dealt"
+    case damageTaken = "damage_taken"
+    case physicalDamageDealt = "physical_damage_dealt"
+    case magicDamageDealt = "magic_damage_dealt"
+    case mostKill = "most_kill"
+    case maxKill = "max_kill"
+    case maxDeath = "max_death"
+    case doubleKill = "double_kill"
+    case tripleKill = "triple_kill"
+    case quadraKill = "quadra_kill"
+    case pentaKill = "penta_kill"
+    case gameLengthSecond = "game_length_second"
+}
+
+struct Season: Decodable {
     let id, value, displayValue: Int
     let isPreseason: Bool
 
@@ -165,6 +206,7 @@ struct Season: Codable {
 
 @frozen
 enum GameType: String, Decodable {
+    case ranked = "RANKED"
     case soloRanked = "SOLORANKED"
     case flexRanked = "FLEXRANKED"
     case aram = "ARAM"
