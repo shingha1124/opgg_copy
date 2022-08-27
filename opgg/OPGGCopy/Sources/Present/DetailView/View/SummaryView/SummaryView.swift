@@ -12,22 +12,28 @@ struct SummaryView: View {
     @ObservedObject var viewModel: SummaryViewModel
     
     private let lastGameView: SummaryLastGameView
-    private let mostChampionView: MostChampionView
+    private let champScoreView: ChampScoreView
     private let playedWithView: PlayedWithView
+    private let bestPlayView: BestPlayView
+    private let mostChampionView: MostChampionView
     
     init(_ viewModel: SummaryViewModel) {
         self.viewModel = viewModel
         lastGameView = SummaryLastGameView(viewModel.viewModels.lastGame)
-        mostChampionView = MostChampionView(viewModel.viewModels.mostChampion)
+        champScoreView = ChampScoreView(viewModel.viewModels.champScore)
         playedWithView = PlayedWithView(viewModel.viewModels.playedWith)
+        bestPlayView = BestPlayView(viewModel.viewModels.bestPlay)
+        mostChampionView = MostChampionView(viewModel.viewModels.mostChampion)
     }
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
                 lastGameView
-                mostChampionView
+                champScoreView
                 playedWithView
+                bestPlayView
+                mostChampionView
             }
             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         }

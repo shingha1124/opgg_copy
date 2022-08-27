@@ -18,7 +18,7 @@ struct DetailTopButtons: View {
         HStack {
             Button(action: {
             }, label: {
-                Text(.Keys.update)
+                Text(key: .update)
                     .font(.system(size: 13).weight(.bold))
                     .foregroundColor(.white)
             })
@@ -28,7 +28,7 @@ struct DetailTopButtons: View {
             
             Button(action: {
             }, label: {
-                Text(.Keys.inGame)
+                Text(key: .inGame)
                     .font(.system(size: 13).weight(.bold))
                     .foregroundColor(.white)
             })

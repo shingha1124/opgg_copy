@@ -16,15 +16,11 @@ struct GameSummary {
     let assistRate: Float
     let kda: Float
     
-    let winRate: WinRate
-    
     init() {
         self.kill = 0
         self.death = 0
         self.assist = 0
         self.kda = 0
-        
-        self.winRate = WinRate(wins: 0, losses: 0)
         
         self.killRate = 0
         self.deathRate = 0
@@ -39,8 +35,6 @@ struct GameSummary {
             $0.win += $1.myData.stats.result == .win ? 1 : 0
             $0.lose += $1.myData.stats.result == .lose ? 1 : 0
         }
-                
-        self.winRate = WinRate(wins: summary.win, losses: summary.lose)
         
         self.kill = summary.kill
         self.death = summary.death
@@ -56,11 +50,7 @@ struct GameSummary {
 }
 
 extension GameSummary {
-    var winRateColor: Color {
-        winRate.rateColor
-    }
-    
-    var kdaRateColor: Color {
+    var kdaColor: Color {
         switch kda {
         case let value where value < 3:
             return .steelGrey
@@ -71,30 +61,5 @@ extension GameSummary {
         default:
             return .darkishPink
         }
-    }
-}
-
-extension GameSummary {
-    func kdaParsedTexts(_ size: CGFloat) -> [ParsedText] {
-        let kill = ParsedText(
-            text: String(format: "%.1f", killRate),
-            color: Color.grey26.uiColor,
-            font: .systemFont(ofSize: size, weight: .bold))
-        
-        let seperater1 = ParsedText(text: " / ", color: Color.grey26.uiColor, font: .systemFont(ofSize: size))
-        
-        let death = ParsedText(
-            text: String(format: "%.1f", deathRate),
-            color: Color.red229.uiColor,
-            font: .systemFont(ofSize: size, weight: .bold))
-        
-        let seperater2 = ParsedText(text: " / ", color: Color.grey26.uiColor, font: .systemFont(ofSize: size))
-        
-        let assist = ParsedText(
-            text: String(format: "%.1f", assistRate),
-            color: Color.grey26.uiColor,
-            font: .systemFont(ofSize: size, weight: .bold))
-        
-        return [kill, seperater1, death, seperater2, assist]
     }
 }

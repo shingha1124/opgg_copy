@@ -23,7 +23,7 @@ struct SummonerInfoView: View {
             .clipShape(RoundedRectangle(cornerRadius: 30))
             .overlay(alignment: .bottom) {
                 Text("\(viewModel.state.level)")
-                    .font(.system(size: 13).weight(.bold))
+                    .font(.system(size: 13))
                     .padding(2)
                     .background(Color.grey44)
                     .clipShape(Capsule())
@@ -38,25 +38,16 @@ struct SummonerInfoView: View {
                     .font(.system(size: 25))
                     .bold()
                     .foregroundColor(.systemDarkgrey)
-
-                let prefix = ParsedText(
-                    key: .Keys.ladderRankPrefix,
-                    color: Color.grey130.uiColor,
-                    font: .systemFont(ofSize: 13, weight: .regular))
-
-                let rank = ParsedText(
-                    text: viewModel.state.rank.isEmpty ? "-" : viewModel.state.rank,
-                    color: viewModel.state.rank.isEmpty ? Color.grey130.uiColor : Color.blue42.uiColor,
-                    font: .systemFont(ofSize: 13, weight: .bold))
-
-                let suffix = ParsedText(
-                    key: viewModel.state.rank.isEmpty ? .Keys.emptyText : .Keys.ladderRankSuffix,
-                    color: Color.grey130.uiColor,
-                    font: .systemFont(ofSize: 13, weight: .regular))
-
-                IntegrateTextView(parsedTextList: [
-                    prefix, rank, suffix
-                ]).fixedSize()
+                
+                let isRank = viewModel.state.rank != 0
+                let args = viewModel.state.rank.currency()
+                let localizedKey: LocalizedKey = isRank ? .ladderRank : .ladderRankEmpty
+                
+                Text(key: localizedKey,
+                     args: [args],
+                     options: [
+                        FontOption(.system, size: 13), ColorOption(.grey130)
+                     ])
                 Spacer()
             }
             Spacer()

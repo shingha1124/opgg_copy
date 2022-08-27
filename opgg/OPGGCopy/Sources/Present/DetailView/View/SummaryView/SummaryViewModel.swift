@@ -18,8 +18,10 @@ final class SummaryViewModel: ObservableObject {
     
     struct ViewModels {
         let lastGame = SummaryLastGameViewModel()
-        let mostChampion = MostChampionViewModel()
+        let champScore = ChampScoreViewModel()
         let playedWith = PlayedWithViewModel()
+        let bestPlay = BestPlayViewModel()
+        let mostChampion = MostChampionViewModel()
     }
     
     @Published var state = State()
@@ -34,13 +36,18 @@ final class SummaryViewModel: ObservableObject {
             .store(in: &cancellable)
         
         update.summonerDetail
-            .map { $0.summoner.mostChampions }
-            .sink(receiveValue: viewModels.mostChampion.update.mostChampion.send)
+            .compactMap { $0.summoner.mostChampions }
+            .sink(receiveValue: viewModels.champScore.update.mostChampion.send)
             .store(in: &cancellable)
         
         update.summonerDetail
             .map { $0.games.data }
             .sink(receiveValue: viewModels.playedWith.update.lastGames.send)
+            .store(in: &cancellable)
+        
+        update.summonerDetail
+            .compactMap { $0.summoner.mostChampions }
+            .sink(receiveValue: viewModels.mostChampion.update.mostChampion.send)
             .store(in: &cancellable)
     }
 }

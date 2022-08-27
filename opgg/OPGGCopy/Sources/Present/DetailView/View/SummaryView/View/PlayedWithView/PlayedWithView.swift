@@ -17,7 +17,7 @@ struct PlayedWithView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(.Keys.playedWithTitle)
+            Text(key: .playedWithTitle)
                 .font(.system(size: 12).weight(.semibold))
                 .foregroundColor(.black)
             
@@ -38,21 +38,19 @@ struct PlayedWithView: View {
                         .lineLimit(1)
                         .fixedSize()
                     
-                    let prefix = ParsedText(
-                        key: .Keys.winRatePrefix,
-                        color: Color.grey103.uiColor,
-                        font: .systemFont(ofSize: 11))
-
-                    let winRate = ParsedText(
-                        text: String(format: "%.1f", viewModel.state.winRate.rate) + "%",
-                        color: viewModel.state.winRate.rateColor.uiColor,
-                        font: .systemFont(ofSize: 11, weight: .bold))
-                    
-                    IntegrateTextView(parsedTextList: [
-                        prefix, winRate
-                    ])
-                    .fixedSize()
-                }
+//                    let winRate = String(format: "%.1f", viewModel.state.winRate.rate)
+//                    let winRateText = "\(winRate)%"
+//                    let localizedString = LocalizedKey.winRate.with(args: [winRateText])
+//                    Text(localizedString.attributedToOption([
+//                        AttributeOption(text: winRateText, options: [
+//                            ColorOption(viewModel.state.winRate.rateColor),
+//                            FontOption(.system(size: 11).bold())
+//                        ])
+//                    ]))
+//                    .lineLimit(1)
+//                    .foregroundColor(.grey103)
+//                    .font(.system(size: 11))
+                }.fixedSize(horizontal: true, vertical: false)
                 
                 Image(systemName: "chevron.right")
                     .frame(width: 35, height: 35)

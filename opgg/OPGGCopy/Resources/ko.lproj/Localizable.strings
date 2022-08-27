@@ -6,20 +6,24 @@
   
 */
 
-"ladderRankPrefix" = "래더랭킹 ";
-"ladderRankSuffix" = "위";
-
-"summaryTitle" = "최근 %d경기\n요약 정보";
-"mostChamionTitle" = "Champscore고처";
-"playedWithTitle" = "같이 게임한 소환사들";
-
-"update" = "전적 갱신";
+//MARK: SummonerInfoView
+"ladderRank" = "html:래더 랭킹 <font color=#2a61f1><b>%@</b></font>위";
+"ladderRankEmpty" = "래더 랭킹 -";
+"update" = "업데이트";
 "inGame" = "인게임";
+"leagueStatsWinLose" = "%d승 %d패 (%@)";
 
-"win" = "승";
-"losses" = "패";
-"winCount" = "%d승";
-"lossesCount" = "%d패";
-"winRatePrefix" = "승률 ";
+//MARK: SummaryLastGameView
+"summaryTitle" = "최근 %d경기\n요약 정보";
+"winRate" = "html:승률 <font color=%@><b>%@</b></font>";
+"kdaFloat" = "html:<b>%.1f / <font color=#e53f47>%.1f</font> / %.1f</b>";
 
-"playCountSuffix" = "%d 게임";
+//MARK: ChampScoreView
+"champScoreTitle" = "챔프 스코어";
+"gameCount" = "%d 게임";
+
+//MARK: PlayedWithView
+"playedWithTitle" = "Played with";
+
+//MARK: BestPlayView
+"bestPlayTitle" = "what champion\ndo i play best?";

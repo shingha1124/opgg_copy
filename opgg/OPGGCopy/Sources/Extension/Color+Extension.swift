@@ -80,4 +80,19 @@ extension Color {
 
         return (r, g, b, o)
     }
+    
+    var hexColor: String {
+        let components = self.components
+        let r = Int(components.red * 255)
+        let g = Int(components.green * 255)
+        let b = Int(components.blue * 255)
+//        let o = Int(components.opacity * 255)
+        return "#\(hexaFromDecimal(r))\(hexaFromDecimal(g))\(hexaFromDecimal(b))"
+    }
+    
+    private func hexaFromDecimal(_ value: Int) -> String {
+        var hex = String(value, radix: 16)
+        hex = hex.count == 1 ? "0" + hex : hex
+        return hex
+    }
 }

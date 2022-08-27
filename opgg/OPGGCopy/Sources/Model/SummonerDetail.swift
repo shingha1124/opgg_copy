@@ -25,12 +25,12 @@ struct SummonerDetail: Decodable {
     let id: Int
     let summonerID, acctID, puuid, name: String
     let internalName: String
-    let profileImageURL: URL
+    let profileImageURL: URL?
     let level: Int
     let updatedAt, renewableAt: Date
     let previousSeasons: [PreviousSeason]
     let leagueStats: [LeagueStats]
-    let mostChampions: MostChampions
+    let mostChampions: MostChampions?
 //    let recentChampionStats: [JSONAny]
     let ladderRank: LadderRank?
 //    let recentSolorankedAnalysis: [RecentSolorankedAnalysis]
@@ -207,6 +207,7 @@ struct Season: Decodable {
 @frozen
 enum GameType: String, Decodable {
     case ranked = "RANKED"
+    case normal = "NORMAL"
     case soloRanked = "SOLORANKED"
     case flexRanked = "FLEXRANKED"
     case aram = "ARAM"

@@ -26,17 +26,17 @@ struct WinRate {
         }
     }
     
-    var text: String {
-        let winLocalize = LocalizedStringKey.Keys.winCount.value
-        let winText = String(format: winLocalize, wins)
-        let lossesLocalize = LocalizedStringKey.Keys.lossesCount.value
-        let lossesText = String(format: lossesLocalize, losses)
-        return "\(winText) \(lossesText)"
+    init(_ games: [GameInfo]) {
+        let summary = games.reduce(into: (win: 0, lose: 0)) {
+            $0.win += $1.myData.stats.result == .win ? 1 : 0
+            $0.lose += $1.myData.stats.result == .lose ? 1 : 0
+        }
+        self.init(wins: summary.win, losses: summary.lose)
     }
 }
 
 extension WinRate {
     var rateColor: Color {
-        rate >= 60 ? .darkishPink : .steelGrey
+        rate >= 60 ? .darkishPink : .darkgrey
     }
 }

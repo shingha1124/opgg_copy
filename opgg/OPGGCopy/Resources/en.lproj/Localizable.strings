@@ -6,21 +6,28 @@
   
 */
 
-"ladderRankPrefix" = "Ladder Rank ";
-"ladderRankSuffix" = "";
+//<br>: 줄바꿈
+//<font color=#00FFFF>word</font>: 글자 색 변경
+//<span style=\"font-family: \(font.fontName); font-size: \(font.pointSize); color: #FFFFFF \">" + HTML 소스 + "</span>
 
+//MARK: SummonerInfoView
+"ladderRank" = "html:Ladder Rank <font color=#2a61f1><b>%@</b></font>";
+"ladderRankEmpty" = "Ladder Rank -";
+"update" = "Update";
+"inGame" = "Ingame";
+"leagueStatsWinLose" = "%dW %dL (%@)";
+
+//MARK: SummaryLastGameView
 "summaryTitle" = "Summary\nlast %d games.";
-"mostChamionTitle" = "Champscore";
+"winRate" = "html:Win <font color=%@><b>%@</b></font>";
+"kdaFloat" = "html:<b>%.1f / <font color=#e53f47>%.1f</font> / %.1f</b>";
+
+//MARK: ChampScoreView
+"champScoreTitle" = "Champscore";
+"gameCount" = "%d Games";
+
+//MARK: PlayedWithView
 "playedWithTitle" = "Played with";
 
-"update" = "Update";
-"inGame" = "InGame";
-
-"win" = "W";
-"losses" = "L";
-"winCount" = "%lldW";
-"lossesCount" = "%dL";
-"winRatePrefix" = "Win ";
-
-"playCountSuffix" = "%d Game";
-
+//MARK: BestPlayView
+"bestPlayTitle" = "what champion\ndo i play best?";

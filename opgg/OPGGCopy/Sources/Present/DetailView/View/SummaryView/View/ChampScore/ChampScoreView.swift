@@ -1,5 +1,5 @@
 //
-//  SummaryLastGameView.swift
+//  ChampScoreView.swift
 //  OPGGCopy
 //
 //  Created by seongha shin on 2022/08/25.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct MostChampionView: View {
+struct ChampScoreView: View {
     
-    @ObservedObject var viewModel: MostChampionViewModel
+    @ObservedObject var viewModel: ChampScoreViewModel
     
-    init(_ viewModel: MostChampionViewModel) {
+    init(_ viewModel: ChampScoreViewModel) {
         self.viewModel = viewModel
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("most")
+            Text(key: .champScoreTitle)
                 .font(.system(size: 12).weight(.semibold))
                 .foregroundColor(.black)
             
@@ -34,11 +34,11 @@ struct MostChampionView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(viewModel.state.champName)
                         .foregroundColor(.grey26)
-                        .font(.system(size: 11))
+                        .font(.system(size: 12).bold())
                     
-                    Text("asd")
+                    Text(key: .gameCount, args: [viewModel.state.playCount])
                         .foregroundColor(.grey103)
-                        .font(.system(size: 11))
+                        .font(.system(size: 12))
                 }
                 
                 Image(systemName: "chevron.right")
@@ -54,8 +54,8 @@ struct MostChampionView: View {
     }
 }
 
-struct MostChampionView_Previews: PreviewProvider {
+struct ChampScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        MostChampionView(MostChampionViewModel())
+        ChampScoreView(ChampScoreViewModel())
     }
 }

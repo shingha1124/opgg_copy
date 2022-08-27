@@ -16,7 +16,6 @@ struct GameInfo: Decodable {
     let createdAt: Date
     let gameMap: GameMap
     let queueInfo: QueueInfo
-    let version: Version
     let gameLengthSecond: Int
     let isRemake, isOpscoreActive, isRecorded: Bool
     let averageTierInfo: TierInfo
@@ -29,7 +28,6 @@ struct GameInfo: Decodable {
         case createdAt = "created_at"
         case gameMap = "game_map"
         case queueInfo = "queue_info"
-        case version
         case gameLengthSecond = "game_length_second"
         case isRemake = "is_remake"
         case isOpscoreActive = "is_opscore_active"
@@ -99,7 +97,8 @@ struct Stats: Decodable {
     let minionKill, neutralMinionKillTeamJungle, neutralMinionKillEnemyJungle, neutralMinionKill: Int
     let goldEarned, totalHeal: Int
     let result: GameResult
-    let opScore, opScoreRank: Int
+    let opScore: Float
+    let opScoreRank: Int
     let isOpscoreMaxInTeam: Bool
 
     enum CodingKeys: String, CodingKey {
@@ -195,11 +194,6 @@ struct GameStat: Decodable {
         case kill, death, assist
         case goldEarned = "gold_earned"
     }
-}
-
-enum Version: String, Decodable {
-    case the12154581416 = "12.15.458.1416"
-    case the12164617002 = "12.16.461.7002"
 }
 
 // MARK: - Meta

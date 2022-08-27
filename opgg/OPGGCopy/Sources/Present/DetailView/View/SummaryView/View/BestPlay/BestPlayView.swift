@@ -1,5 +1,5 @@
 //
-//  SummaryLastGameView.swift
+//  BestPlayView.swift
 //  OPGGCopy
 //
 //  Created by seongha shin on 2022/08/25.
@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-struct MostChampionView: View {
+struct BestPlayView: View {
     
-    @ObservedObject var viewModel: MostChampionViewModel
+    @ObservedObject var viewModel: BestPlayViewModel
     
-    init(_ viewModel: MostChampionViewModel) {
+    init(_ viewModel: BestPlayViewModel) {
         self.viewModel = viewModel
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("most")
+            Text(key: .bestPlayTitle)
                 .font(.system(size: 12).weight(.semibold))
                 .foregroundColor(.black)
             
             Spacer()
             
             HStack(spacing: 0) {
-                let url = viewModel.state.champImageUrl
+                let url = viewModel.state.imageUrl
                 AsyncImage(url: url, content: { $0.resizable() }, placeholder: { Color.grey130 })
                     .frame(width: 35, height: 35)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
@@ -32,13 +32,26 @@ struct MostChampionView: View {
                 Spacer().frame(width: 4)
                 
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(viewModel.state.champName)
+                    Text(viewModel.state.name)
                         .foregroundColor(.grey26)
                         .font(.system(size: 11))
+                        .lineLimit(1)
+                        .fixedSize()
                     
-                    Text("asd")
-                        .foregroundColor(.grey103)
-                        .font(.system(size: 11))
+//                    let prefix = ParsedText(
+//                        key: .Keys.winRatePrefix,
+//                        color: Color.grey103.uiColor,
+//                        font: .systemFont(ofSize: 11))
+//
+//                    let winRate = ParsedText(
+//                        text: String(format: "%.1f", viewModel.state.winRate.rate) + "%",
+//                        color: viewModel.state.winRate.rateColor.uiColor,
+//                        font: .systemFont(ofSize: 11, weight: .bold))
+//                    
+//                    IntegrateTextView(parsedTextList: [
+//                        prefix, winRate
+//                    ])
+//                    .fixedSize()
                 }
                 
                 Image(systemName: "chevron.right")
@@ -54,8 +67,8 @@ struct MostChampionView: View {
     }
 }
 
-struct MostChampionView_Previews: PreviewProvider {
+struct BestPlayView_Previews: PreviewProvider {
     static var previews: some View {
-        MostChampionView(MostChampionViewModel())
+        BestPlayView(BestPlayViewModel())
     }
 }

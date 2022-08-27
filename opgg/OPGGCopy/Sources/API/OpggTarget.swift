@@ -19,7 +19,7 @@ extension OpggTarget: BaseTarget {
         case .requestSummonerSearch:
             return "/api/summoners/kr/autocomplete"
         case .requestSummonerDetail(let name):
-            return "_next/data/qx1tV_J8eyd7sy37QyPtj/summoners/kr/\(name).json"
+            return "_next/data/qtRXSDoj8a6bBlpvTRd8p/summoners/kr/\(name).json"
         case .requestGameInfos(let id):
             return "/api/games/kr/summoners/\(id)"
         }

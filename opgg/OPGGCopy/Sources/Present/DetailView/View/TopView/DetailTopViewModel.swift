@@ -14,7 +14,7 @@ final class DetailTopViewModel: ObservableObject {
     struct State {
         var imageUrl: URL?
         var name = ""
-        var rank = ""
+        var rank = 0
         var level = 0
     }
     
@@ -42,14 +42,7 @@ final class DetailTopViewModel: ObservableObject {
             .store(in: &cancellable)
         
         update.summonerDetail
-            .map { $0.ladderRank }
-            .map { rank -> String in
-                if let rank = rank {
-                    return rank.rank.currency()
-                } else {
-                    return ""
-                }
-            }
+            .compactMap { $0.ladderRank != nil ? $0.ladderRank?.rank : 0 }
             .sink(receiveValue: { [unowned self] rank in
                 self.state.rank = rank
             })

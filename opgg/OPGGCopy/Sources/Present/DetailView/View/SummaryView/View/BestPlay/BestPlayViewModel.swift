@@ -1,16 +1,18 @@
 //
-//  SummaryLastGameViewModel.swift
+//  BestPlayViewModel.swift
 //  OPGGCopy
 //
 //  Created by seongha shin on 2022/08/25.
 //
 
 import Combine
+import Foundation
 
-final class SummaryLastGameViewModel: ObservableObject {
+final class BestPlayViewModel: ObservableObject {
     
     struct State {
-        var gameSummary = GameSummary()
+        var imageUrl: URL?
+        var name = ""
         var winRate = WinRate(wins: 0, losses: 0)
     }
     
@@ -24,16 +26,8 @@ final class SummaryLastGameViewModel: ObservableObject {
     
     init() {
         update.lastGames
-            .map { GameSummary($0) }
             .sink(receiveValue: { [unowned self] summary in
-                state.gameSummary = summary
-            })
-            .store(in: &cancellable)
-        
-        update.lastGames
-            .map { WinRate($0) }
-            .sink(receiveValue: { [unowned self] WinRate in
-                state.winRate = WinRate
+//                state.gameSummary = summary
             })
             .store(in: &cancellable)
     }

@@ -17,38 +17,39 @@ struct SummaryLastGameView: View {
     
     var body: some View { 
         let summary = viewModel.state.gameSummary
+        let winRate = viewModel.state.winRate
         VStack(alignment: .leading, spacing: 4) {
-            Text(String.localized(.Keys.summaryTitle, args: [summary.winRate.total]))
+            Text(key: .summaryTitle, args: [winRate.total])
                 .font(.system(size: 12).weight(.semibold))
                 .foregroundColor(.black)
+            
             Spacer().frame(height: 5)
+            
             Text(String(format: "%.2f:1", summary.kda))
-                .font(.system(size: 13).weight(.bold))
+                .font(.system(size: 14).weight(.bold))
                 .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
                 .foregroundColor(.white)
-                .background(summary.kdaRateColor)
+                .background(summary.kdaColor)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
             
-            let prefix = ParsedText(
-                key: .Keys.winRatePrefix,
-                color: Color.grey26.uiColor,
-                font: .systemFont(ofSize: 13))
-
-            let winRate = ParsedText(
-                text: String(format: "%.0f", summary.winRate.rate) + "%",
-                color: summary.winRate.rateColor.uiColor,
-                font: .systemFont(ofSize: 13, weight: .bold))
-            
-            IntegrateTextView(parsedTextList: [
-                prefix, winRate
-            ]).fixedSize()
+            let winRateText = "\(Int(round(winRate.rate)))%"
+            let winRateColor = winRate.rateColor.hexColor
+            Text(key: .winRate, args: [winRateColor, winRateText], options: [
+                FontOption(.system, size: 14),
+                ColorOption(.grey26)
+            ])
             
             HStack(spacing: 0) {
                 Text("KDA ")
-                    .font(.system(size: 13))
+                    .font(.system(size: 14))
                     .foregroundColor(.grey26)
                 
-                IntegrateTextView(parsedTextList: summary.kdaParsedTexts(13)).fixedSize()
+                Text(key: .kdaFloat,
+                     args: [summary.killRate, summary.deathRate, summary.assistRate],
+                     options: [
+                        FontOption(.system, size: 14),
+                        ColorOption(.grey26)
+                     ])
             }
         }
         .padding(EdgeInsets(top: 16, leading: 12, bottom: 16, trailing: 12))
