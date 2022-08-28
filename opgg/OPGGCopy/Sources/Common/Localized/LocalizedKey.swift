@@ -27,10 +27,6 @@ enum LocalizedKey: String {
 }
 
 extension LocalizedKey {
-//    func with(args: [CVarArg]) -> String {
-//        String(format: self.value, args)
-//    }
-    
     var value: String {
         NSLocalizedString(self.rawValue, comment: "")
     }

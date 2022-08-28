@@ -17,10 +17,10 @@ struct ChampScoreView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(key: .champScoreTitle)
-                .font(.system(size: 12).weight(.semibold))
-                .foregroundColor(.black)
-            
+            LocalizedText(.champScoreTitle)
+                .font(size: 12).bold()
+                .color(.grey26)
+                .fixedSize()
             Spacer()
             
             HStack(spacing: 0) {
@@ -36,9 +36,10 @@ struct ChampScoreView: View {
                         .foregroundColor(.grey26)
                         .font(.system(size: 12).bold())
                     
-                    Text(key: .gameCount, args: [viewModel.state.playCount])
-                        .foregroundColor(.grey103)
-                        .font(.system(size: 12))
+                    LocalizedText(.gameCount, args: [viewModel.state.playCount])
+                        .font(size: 12).bold()
+                        .color(.grey103)
+                        .fixedSize()
                 }
                 
                 Image(systemName: "chevron.right")

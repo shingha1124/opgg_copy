@@ -17,9 +17,10 @@ struct PlayedWithView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(key: .playedWithTitle)
-                .font(.system(size: 12).weight(.semibold))
-                .foregroundColor(.black)
+            LocalizedText(.playedWithTitle)
+                .font(size: 12).bold()
+                .color(.grey26)
+                .fixedSize()
             
             Spacer()
             
@@ -34,22 +35,18 @@ struct PlayedWithView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(viewModel.state.name)
                         .foregroundColor(.grey26)
-                        .font(.system(size: 11))
+                        .font(.system(size: 12))
                         .lineLimit(1)
                         .fixedSize()
                     
-//                    let winRate = String(format: "%.1f", viewModel.state.winRate.rate)
-//                    let winRateText = "\(winRate)%"
-//                    let localizedString = LocalizedKey.winRate.with(args: [winRateText])
-//                    Text(localizedString.attributedToOption([
-//                        AttributeOption(text: winRateText, options: [
-//                            ColorOption(viewModel.state.winRate.rateColor),
-//                            FontOption(.system(size: 11).bold())
-//                        ])
-//                    ]))
-//                    .lineLimit(1)
-//                    .foregroundColor(.grey103)
-//                    .font(.system(size: 11))
+                    let winRate = viewModel.state.winRate
+                    let winRateTextValue = String(format: "%.1f", winRate.rate)
+                    let winRateText = "\(winRateTextValue)%"
+                    let winRateColor = winRate.rateColor.hexColor
+                    LocalizedText(.winRate, args: [winRateColor, winRateText])
+                        .font(size: 12)
+                        .color(.grey103)
+                        .fixedSize()
                 }.fixedSize(horizontal: true, vertical: false)
                 
                 Image(systemName: "chevron.right")

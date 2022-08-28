@@ -19,9 +19,10 @@ struct SummaryLastGameView: View {
         let summary = viewModel.state.gameSummary
         let winRate = viewModel.state.winRate
         VStack(alignment: .leading, spacing: 4) {
-            Text(key: .summaryTitle, args: [winRate.total])
-                .font(.system(size: 12).weight(.semibold))
-                .foregroundColor(.black)
+            LocalizedText(.summaryTitle, args: [winRate.total])
+                .font(size: 12).bold()
+                .color(.grey26)
+                .fixedSize()
             
             Spacer().frame(height: 5)
             
@@ -34,22 +35,20 @@ struct SummaryLastGameView: View {
             
             let winRateText = "\(Int(round(winRate.rate)))%"
             let winRateColor = winRate.rateColor.hexColor
-            Text(key: .winRate, args: [winRateColor, winRateText], options: [
-                FontOption(.system, size: 14),
-                ColorOption(.grey26)
-            ])
+            LocalizedText(.winRate, args: [winRateColor, winRateText])
+                .font(size: 14)
+                .color(.grey26)
+                .fixedSize()
             
             HStack(spacing: 0) {
                 Text("KDA ")
                     .font(.system(size: 14))
                     .foregroundColor(.grey26)
                 
-                Text(key: .kdaFloat,
-                     args: [summary.killRate, summary.deathRate, summary.assistRate],
-                     options: [
-                        FontOption(.system, size: 14),
-                        ColorOption(.grey26)
-                     ])
+                LocalizedText(.kdaFloat, args: [summary.killRate, summary.deathRate, summary.assistRate])
+                    .font(size: 14)
+                    .color(.grey26)
+                    .fixedSize()
             }
         }
         .padding(EdgeInsets(top: 16, leading: 12, bottom: 16, trailing: 12))

@@ -17,9 +17,10 @@ struct BestPlayView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(key: .bestPlayTitle)
-                .font(.system(size: 12).weight(.semibold))
-                .foregroundColor(.black)
+            LocalizedText(.bestPlayTitle)
+                .font(size: 12).bold()
+                .color(.grey26)
+                .fixedSize()
             
             Spacer()
             
@@ -34,29 +35,19 @@ struct BestPlayView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(viewModel.state.name)
                         .foregroundColor(.grey26)
-                        .font(.system(size: 11))
+                        .font(.system(size: 12)).bold()
                         .lineLimit(1)
                         .fixedSize()
                     
-//                    let prefix = ParsedText(
-//                        key: .Keys.winRatePrefix,
-//                        color: Color.grey103.uiColor,
-//                        font: .systemFont(ofSize: 11))
-//
-//                    let winRate = ParsedText(
-//                        text: String(format: "%.1f", viewModel.state.winRate.rate) + "%",
-//                        color: viewModel.state.winRate.rateColor.uiColor,
-//                        font: .systemFont(ofSize: 11, weight: .bold))
-//                    
-//                    IntegrateTextView(parsedTextList: [
-//                        prefix, winRate
-//                    ])
-//                    .fixedSize()
+                    let winRate = viewModel.state.winRate
+                    let winRateTextValue = String(format: "%.1f", winRate.rate)
+                    let winRateText = "\(winRateTextValue)%"
+                    let winRateColor = winRate.rateColor.hexColor
+                    LocalizedText(.winRate, args: [winRateColor, winRateText])
+                        .font(size: 12)
+                        .color(.grey103)
+                        .fixedSize()
                 }
-                
-                Image(systemName: "chevron.right")
-                    .frame(width: 35, height: 35)
-                    .foregroundColor(.grey130)
             }
         }
         .padding(EdgeInsets(top: 16, leading: 12, bottom: 16, trailing: 12))

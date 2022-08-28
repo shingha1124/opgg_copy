@@ -41,9 +41,10 @@ struct LeagueStatsItemView: View {
                 
                 HStack(spacing: 3) {
                     let winRate = viewModel.state.winRate
-                    Text(key: .leagueStatsWinLose, args: [winRate.wins, winRate.losses, "\(Int(round(winRate.rate)))%"])
-                        .font(.system(size: 10))
-                        .foregroundColor(.grey103)
+                    LocalizedText(.leagueStatsWinLose, args: [winRate.wins, winRate.losses, "\(Int(round(winRate.rate)))%"])
+                        .font(size: 11)
+                        .color(.grey103)
+                        .fixedSize()
                 }
             }
             Spacer()

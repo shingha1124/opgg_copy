@@ -47,6 +47,18 @@ struct GameSummary {
         
         self.kda = Float(summary.kill + summary.assist) / Float(summary.death)
     }
+    
+    init(_ game: GameInfo) {
+        let state = game.myData.stats
+        self.kill = state.kill
+        self.death = state.death
+        self.assist = state.assist
+        
+        self.killRate = Float(state.kill)
+        self.deathRate = Float(state.death)
+        self.assistRate = Float(state.assist)
+        self.kda = Float(state.kill + state.assist) / Float(state.death)
+    }
 }
 
 extension GameSummary {

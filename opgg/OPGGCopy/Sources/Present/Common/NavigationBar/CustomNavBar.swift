@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-//let gradient = LinearGradient(colors: [Color.orange,Color.green],
-//                                  startPoint: .top, endPoint: .bottom)
 struct CustomNavBar<Left, Center, Right>: View where Left: View, Center: View, Right: View {
     let left: () -> Left
     let center: () -> Center

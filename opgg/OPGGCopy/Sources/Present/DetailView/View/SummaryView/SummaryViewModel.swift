@@ -46,6 +46,11 @@ final class SummaryViewModel: ObservableObject {
             .store(in: &cancellable)
         
         update.summonerDetail
+            .map { $0.games.data }
+            .sink(receiveValue: viewModels.bestPlay.update.lastGames.send)
+            .store(in: &cancellable)
+        
+        update.summonerDetail
             .compactMap { $0.summoner.mostChampions }
             .sink(receiveValue: viewModels.mostChampion.update.mostChampion.send)
             .store(in: &cancellable)

@@ -43,11 +43,11 @@ struct SummonerInfoView: View {
                 let args = viewModel.state.rank.currency()
                 let localizedKey: LocalizedKey = isRank ? .ladderRank : .ladderRankEmpty
                 
-                Text(key: localizedKey,
-                     args: [args],
-                     options: [
-                        FontOption(.system, size: 13), ColorOption(.grey130)
-                     ])
+                LocalizedText(localizedKey, args: [args])
+                    .font(size: 13)
+                    .color(.grey130)
+                    .fixedSize()
+                
                 Spacer()
             }
             Spacer()

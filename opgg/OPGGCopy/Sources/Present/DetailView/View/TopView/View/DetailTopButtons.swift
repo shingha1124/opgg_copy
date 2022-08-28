@@ -18,9 +18,10 @@ struct DetailTopButtons: View {
         HStack {
             Button(action: {
             }, label: {
-                Text(key: .update)
-                    .font(.system(size: 13).weight(.bold))
-                    .foregroundColor(.white)
+                LocalizedText(.update)
+                    .font(size: 13).bold()
+                    .color(.white)
+                    .fixedSize()
             })
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.blue42)
@@ -28,9 +29,10 @@ struct DetailTopButtons: View {
             
             Button(action: {
             }, label: {
-                Text(key: .inGame)
-                    .font(.system(size: 13).weight(.bold))
-                    .foregroundColor(.white)
+                LocalizedText(.inGame)
+                    .font(size: 13).bold()
+                    .color(.white)
+                    .fixedSize()
             })
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.grey83)
