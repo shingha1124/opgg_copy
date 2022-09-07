@@ -45,10 +45,17 @@ struct SummaryLastGameView: View {
                     .font(.system(size: 14))
                     .foregroundColor(.grey26)
                 
-                LocalizedText(.kdaFloat, args: [summary.killRate, summary.deathRate, summary.assistRate])
-                    .font(size: 14)
-                    .color(.grey26)
-                    .fixedSize()
+                Group {
+                    Text(String(format: "%.1f / ", summary.killRate))
+                        .foregroundColor(.grey26) +
+                    Text(String(format: "%.1f", summary.deathRate))
+                        .foregroundColor(.red229) +
+                    Text(String(format: " / %.1f", summary.assistRate))
+                        .foregroundColor(.grey26)
+                }
+                .font(.system(size: 14).bold())
+                .lineLimit(1)
+                .fixedSize()
             }
         }
         .padding(EdgeInsets(top: 16, leading: 12, bottom: 16, trailing: 12))

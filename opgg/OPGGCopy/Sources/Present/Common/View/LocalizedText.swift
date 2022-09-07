@@ -39,19 +39,20 @@ enum HtmlFontWeight: String {
 }
 
 struct LocalizedText: UIViewRepresentable {
-    private let key: LocalizedKey
-    private let args: [CVarArg]
+    private let text: String
     
     private let localizedOption = LocalizedOption()
     
+    init(_ text: String) {
+        self.text = text
+    }
+    
     init(key: LocalizedKey) {
-        self.key = key
-        self.args = []
+        self.text = key.value
     }
 
     init(_ key: LocalizedKey, args: [CVarArg] = []) {
-        self.key = key
-        self.args = args
+        self.text = String(format: key.value, args)
     }
     
     func makeUIView(context: Context) -> UILabel {
@@ -59,8 +60,6 @@ struct LocalizedText: UIViewRepresentable {
     }
 
     func updateUIView(_ uiLabel: UILabel, context: Context) {
-        let text = String(format: key.value, args)
-        
         let htmlText = """
 <span style=\"
 font-family: \(localizedOption.font.rawValue);

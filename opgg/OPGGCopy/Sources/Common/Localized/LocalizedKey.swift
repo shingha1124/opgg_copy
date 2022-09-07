@@ -16,7 +16,6 @@ enum LocalizedKey: String {
     
     case summaryTitle
     case winRate
-    case kdaFloat
     
     case champScoreTitle
     case gameCount
@@ -24,6 +23,21 @@ enum LocalizedKey: String {
     case playedWithTitle
     
     case bestPlayTitle
+    
+    case win
+    case lose
+    
+    // MARK: Rank
+    case soloRanked
+    case flexRanked
+    case aram
+    case rankNotFound
+    
+    case killRate
+    
+    case dayAgo
+    case hourAgo
+    case minuteAgo
 }
 
 extension LocalizedKey {

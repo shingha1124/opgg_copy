@@ -20,7 +20,6 @@
 //MARK: SummaryLastGameView
 "summaryTitle" = "Summary<br>last %d games.";
 "winRate" = "Win <font color=%@><b>%@</b></font>";
-"kdaFloat" = "<b>%.1f / <font color=#e53f47>%.1f</font> / %.1f</b>";
 
 //MARK: ChampScoreView
 "champScoreTitle" = "Champscore";
@@ -31,3 +30,19 @@
 
 //MARK: BestPlayView
 "bestPlayTitle" = "what champion<br>do i play best?";
+
+//MARK: Game
+"win" = "W";
+"lose" = "L";
+
+//MARK: Rank
+"soloRanked" = "Ranked<br>Solo/Duo";
+"flexRanked" = "Ranked<br>Flex";
+"aram" = "ARAM";
+"rankNotFound" = "notFound";
+
+//MARK: Common
+"killRate" = "K/P %@";
+"dayAgo" = "%d day ago";
+"hourAgo" = "%d hour ago";
+"minuteAgo" = "%d minute ago";

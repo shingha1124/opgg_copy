@@ -149,7 +149,7 @@ struct Summoner: Decodable, Hashable {
     let internalName: String
     let profileImageURL: URL
     let level: Int
-    let updatedAt: Date
+    let updatedAt: Date?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -161,7 +161,6 @@ struct Summoner: Decodable, Hashable {
         case level
         case updatedAt = "updated_at"
     }
-}
 
 enum TeamKey: String, Decodable {
     case blue = "BLUE"

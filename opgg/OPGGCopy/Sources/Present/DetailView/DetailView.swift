@@ -14,6 +14,7 @@ struct DetailView: View {
     private let prevSeasonsView: PreviousSeasonsView
     private let leagueStatsView: LeagueStatsView
     private let summaryView: SummaryView
+    private let gameListView: GameListView
     
     @State var navbarBackgroundAlpha: CGFloat = 0
     
@@ -23,11 +24,12 @@ struct DetailView: View {
         prevSeasonsView = PreviousSeasonsView(viewModel.viewModels.prevSeasons)
         leagueStatsView = LeagueStatsView(viewModel.viewModels.leagueStats)
         summaryView = SummaryView(viewModel.viewModels.summary)
+        gameListView = GameListView(viewModel.viewModels.gameList)
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 GeometryReader { proxy in
                     Color.clear.preference(
                         key: OffsetPreferenceKey.self,
@@ -42,14 +44,18 @@ struct DetailView: View {
                     topView
                     VStack(spacing: 0) {
                         prevSeasonsView
-                            .padding(.bottom, 20)
+                        Spacer().frame(height: 20)
                         leagueStatsView
-                            .padding(.bottom, 10)
+                        Spacer().frame(height: 10)
                         summaryView
                     }
                     .padding(.vertical, 20)
-                    .background(Color.white)
+                    .background(.white)
+                    
+                    Spacer().frame(height: 10)
+                    gameListView
                 }
+                .background(Color.grey243)
             }
             .coordinateSpace(name: "ScrollViewOrigin")
             .onPreferenceChange(OffsetPreferenceKey.self) { offset in
@@ -58,7 +64,7 @@ struct DetailView: View {
                 navbarAlpha = min(navbarAlpha, 1)
                 navbarBackgroundAlpha = navbarAlpha
             }
-            .background(Color.white243)
+            .background(Color.grey243)
         }
         .navigationBarHidden(true)
         .safeAreaInset(edge: .top) {
@@ -73,14 +79,14 @@ struct DetailView: View {
                 }, center: {
                     Text(viewModel.state.summonerName)
                         .font(.system(size: 19).weight(.bold))
-                        .foregroundColor(.white.opacity(navbarBackgroundAlpha))
+                        .foregroundColor(.grey26.opacity(navbarBackgroundAlpha))
                 }, right: {
                     Text("3")
                         .font(.system(size: 19).weight(.bold))
                 })
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.systemBackground2.opacity(navbarBackgroundAlpha))
+                .background(Color.white.opacity(navbarBackgroundAlpha))
             }
         }
         .onAppear {

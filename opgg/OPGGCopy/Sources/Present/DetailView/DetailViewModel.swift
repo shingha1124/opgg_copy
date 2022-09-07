@@ -22,6 +22,7 @@ final class DetailViewModel: ObservableObject {
         let prevSeasons = PreviousSeasonsViewModel()
         let leagueStats = LeagueStatsViewModel()
         let summary = SummaryViewModel()
+        let gameList = GameListViewModel()
     }
     
     @Published var state = State()
@@ -33,6 +34,10 @@ final class DetailViewModel: ObservableObject {
     @Inject(\.opggRepository) private var opggRepository: OpggRepository
     @Inject(\.seasonData) private var seasonData: SeasonData
     @Inject(\.championData) private var championData: ChampionData
+    @Inject(\.spellData) private var spellData: SpellData
+    @Inject(\.runePageData) private var runePageData: RunePageData
+    @Inject(\.runeData) private var runeData: RuneData
+    @Inject(\.itemData) private var itemData: ItemData
     
     deinit {
         print("Deinit DetailViewModel")
@@ -51,6 +56,10 @@ final class DetailViewModel: ObservableObject {
             .handleEvents(receiveOutput: { [unowned self] data in
                 self.seasonData.updateData(data.summoner.seasons)
                 self.championData.updateData(data.summoner.champions)
+                self.spellData.updateData(data.summoner.spellsByID)
+                self.runePageData.updateData(data.summoner.runePagesByID)
+                self.runeData.updateData(data.summoner.runesByID)
+                self.itemData.updateData(data.summoner.itemsByID)
             })
             .share()
         
@@ -78,6 +87,11 @@ final class DetailViewModel: ObservableObject {
         
         successRequestDetail
             .sink(receiveValue: viewModels.summary.update.summonerDetail.send)
+            .store(in: &cancellable)
+        
+        successRequestDetail
+            .map { $0.games.data }
+            .sink(receiveValue: viewModels.gameList.update.games.send)
             .store(in: &cancellable)
         
         Publishers.MergeMany([

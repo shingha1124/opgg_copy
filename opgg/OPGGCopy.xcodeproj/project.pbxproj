@@ -46,6 +46,18 @@
 		E0D7A15F28BA72AA00DA4229 /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A15E28BA72AA00DA4229 /* LocalizedText.swift */; };
 		E0D7A16228BB6F9700DA4229 /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A16128BB6F9700DA4229 /* GameListViewModel.swift */; };
 		E0D7A16428BB6F9E00DA4229 /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A16328BB6F9E00DA4229 /* GameListView.swift */; };
+		E0D7A16928BB703700DA4229 /* GameListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A16828BB703700DA4229 /* GameListItemView.swift */; };
+		E0D7A16B28BB704100DA4229 /* GameListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A16A28BB704000DA4229 /* GameListItemViewModel.swift */; };
+		E0D7A16D28BB7A2D00DA4229 /* Model+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A16C28BB7A2D00DA4229 /* Model+Extension.swift */; };
+		E0D7A17028BB7AE600DA4229 /* GameItemSummonerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A16F28BB7AE600DA4229 /* GameItemSummonerViewModel.swift */; };
+		E0D7A17228BB7B2600DA4229 /* GameItemSummonerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A17128BB7B2600DA4229 /* GameItemSummonerView.swift */; };
+		E0D7A17428BB984000DA4229 /* SpellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A17328BB984000DA4229 /* SpellData.swift */; };
+		E0D7A17628BB9ADE00DA4229 /* RunePageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A17528BB9ADE00DA4229 /* RunePageData.swift */; };
+		E0D7A17828BB9AE800DA4229 /* RuneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A17728BB9AE800DA4229 /* RuneData.swift */; };
+		E0D7A17A28BB9F1300DA4229 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A17928BB9F1300DA4229 /* ItemData.swift */; };
+		E0D7A17E28BBA08F00DA4229 /* SquareRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A17D28BBA08F00DA4229 /* SquareRoundView.swift */; };
+		E0D7A18028BBA2FB00DA4229 /* SummonerItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A17F28BBA2FB00DA4229 /* SummonerItemsViewModel.swift */; };
+		E0D7A18228BBA30A00DA4229 /* SummonerItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7A18128BBA30A00DA4229 /* SummonerItemsView.swift */; };
 		E0DF4F4528B1FBB700D457E6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF4F4428B1FBB700D457E6 /* Color+Extension.swift */; };
 		E0DF4F4728B1FBCA00D457E6 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0DF4F4628B1FBCA00D457E6 /* Colors.xcassets */; };
 		E0DF4F4B28B1FEEE00D457E6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF4F4A28B1FEEE00D457E6 /* MainViewModel.swift */; };
@@ -124,6 +136,18 @@
 		E0D7A15E28BA72AA00DA4229 /* LocalizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedText.swift; sourceTree = "<group>"; };
 		E0D7A16128BB6F9700DA4229 /* GameListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
 		E0D7A16328BB6F9E00DA4229 /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
+		E0D7A16828BB703700DA4229 /* GameListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListItemView.swift; sourceTree = "<group>"; };
+		E0D7A16A28BB704000DA4229 /* GameListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListItemViewModel.swift; sourceTree = "<group>"; };
+		E0D7A16C28BB7A2D00DA4229 /* Model+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Extension.swift"; sourceTree = "<group>"; };
+		E0D7A16F28BB7AE600DA4229 /* GameItemSummonerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemSummonerViewModel.swift; sourceTree = "<group>"; };
+		E0D7A17128BB7B2600DA4229 /* GameItemSummonerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemSummonerView.swift; sourceTree = "<group>"; };
+		E0D7A17328BB984000DA4229 /* SpellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellData.swift; sourceTree = "<group>"; };
+		E0D7A17528BB9ADE00DA4229 /* RunePageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunePageData.swift; sourceTree = "<group>"; };
+		E0D7A17728BB9AE800DA4229 /* RuneData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuneData.swift; sourceTree = "<group>"; };
+		E0D7A17928BB9F1300DA4229 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
+		E0D7A17D28BBA08F00DA4229 /* SquareRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareRoundView.swift; sourceTree = "<group>"; };
+		E0D7A17F28BBA2FB00DA4229 /* SummonerItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerItemsViewModel.swift; sourceTree = "<group>"; };
+		E0D7A18128BBA30A00DA4229 /* SummonerItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerItemsView.swift; sourceTree = "<group>"; };
 		E0DF4F4428B1FBB700D457E6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		E0DF4F4628B1FBCA00D457E6 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E0DF4F4A28B1FEEE00D457E6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -206,9 +230,9 @@
 		E05164A828B7660000E5120D /* PreviousSeasons */ = {
 			isa = PBXGroup;
 			children = (
+				E05164AB28B7660000E5120D /* View */,
 				E05164A928B7660000E5120D /* PreviousSeasonsViewModel.swift */,
 				E05164AA28B7660000E5120D /* PreviousSeasonsView.swift */,
-				E05164AB28B7660000E5120D /* View */,
 			);
 			path = PreviousSeasons;
 			sourceTree = "<group>";
@@ -225,9 +249,9 @@
 		E05164AE28B7660000E5120D /* TopView */ = {
 			isa = PBXGroup;
 			children = (
+				E05164B128B7660000E5120D /* View */,
 				E05164AF28B7660000E5120D /* DetailTopViewModel.swift */,
 				E05164B028B7660000E5120D /* DetailTopView.swift */,
-				E05164B128B7660000E5120D /* View */,
 			);
 			path = TopView;
 			sourceTree = "<group>";
@@ -297,6 +321,7 @@
 		E0A2E88228B4CBB8001F7D46 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E0A2E89428B60839001F7D46 /* CustomNavBar.swift */,
 				E0A2E88B28B5E185001F7D46 /* NavigationLazyView.swift */,
 				E0D7A15E28BA72AA00DA4229 /* LocalizedText.swift */,
 			);
@@ -309,14 +334,6 @@
 				E0A2E88728B595A0001F7D46 /* CustomNavigationView.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		E0A2E89628B60CE4001F7D46 /* NavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				E0A2E89428B60839001F7D46 /* CustomNavBar.swift */,
-			);
-			path = NavigationBar;
 			sourceTree = "<group>";
 		};
 		E0BD810128B732470018D047 /* SummaryView */ = {
@@ -370,18 +387,56 @@
 		E0D7A16028BB6F8300DA4229 /* GameListView */ = {
 			isa = PBXGroup;
 			children = (
-				E0D7A16528BB700C00DA4229 /* View */,
+				E0D7A16528BB700C00DA4229 /* Item */,
 				E0D7A16328BB6F9E00DA4229 /* GameListView.swift */,
 				E0D7A16128BB6F9700DA4229 /* GameListViewModel.swift */,
 			);
 			path = GameListView;
 			sourceTree = "<group>";
 		};
-		E0D7A16528BB700C00DA4229 /* View */ = {
+		E0D7A16528BB700C00DA4229 /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				E0D7A16E28BB7ABC00DA4229 /* View */,
+				E0D7A16828BB703700DA4229 /* GameListItemView.swift */,
+				E0D7A16A28BB704000DA4229 /* GameListItemViewModel.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		E0D7A16E28BB7ABC00DA4229 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E0D7A18328BBA31A00DA4229 /* summoner */,
+				E0D7A18428BBA32100DA4229 /* Item */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E0D7A17C28BBA07600DA4229 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				E0D7A17D28BBA08F00DA4229 /* SquareRoundView.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		E0D7A18328BBA31A00DA4229 /* summoner */ = {
+			isa = PBXGroup;
+			children = (
+				E0D7A16F28BB7AE600DA4229 /* GameItemSummonerViewModel.swift */,
+				E0D7A17128BB7B2600DA4229 /* GameItemSummonerView.swift */,
+			);
+			path = summoner;
+			sourceTree = "<group>";
+		};
+		E0D7A18428BBA32100DA4229 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				E0D7A17F28BBA2FB00DA4229 /* SummonerItemsViewModel.swift */,
+				E0D7A18128BBA30A00DA4229 /* SummonerItemsView.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 		E0DF4F4028B1EF8900D457E6 /* Sources */ = {
@@ -508,6 +563,7 @@
 				E0BD810B28B73A4C0018D047 /* GameInfos.swift */,
 				E0BD810D28B744620018D047 /* GameSummary.swift */,
 				E0A2E88328B4CBED001F7D46 /* WinRate.swift */,
+				E0D7A16C28BB7A2D00DA4229 /* Model+Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -561,7 +617,7 @@
 		E0DF4F9328B38D3300D457E6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E0A2E89628B60CE4001F7D46 /* NavigationBar */,
+				E0D7A17C28BBA07600DA4229 /* Modifier */,
 				E0A2E88F28B5EBD4001F7D46 /* ViewController */,
 				E0A2E88228B4CBB8001F7D46 /* View */,
 				E0A2E88128B4CBAF001F7D46 /* Struct */,
@@ -576,6 +632,10 @@
 				E0DF4FA528B3AE5000D457E6 /* SeasonData.swift */,
 				E0A2E87F28B4C13A001F7D46 /* TierImageData.swift */,
 				E05164D628B769B000E5120D /* ChampionData.swift */,
+				E0D7A17328BB984000DA4229 /* SpellData.swift */,
+				E0D7A17528BB9ADE00DA4229 /* RunePageData.swift */,
+				E0D7A17728BB9AE800DA4229 /* RuneData.swift */,
+				E0D7A17928BB9F1300DA4229 /* ItemData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -756,9 +816,11 @@
 				E05164C128B7660000E5120D /* DetailTopButtons.swift in Sources */,
 				E0DF4FA128B3A00200D457E6 /* PreviewMockData.swift in Sources */,
 				E0DF4F7C28B29D0E00D457E6 /* SearchSummonerListView.swift in Sources */,
+				E0D7A17828BB9AE800DA4229 /* RuneData.swift in Sources */,
 				E0D7A14C28B7814A00DA4229 /* PlayedWithView.swift in Sources */,
 				E0DF4F6928B2699100D457E6 /* OpggRepository.swift in Sources */,
 				E0D7A15628B7A88B00DA4229 /* ChampScoreView.swift in Sources */,
+				E0D7A16928BB703700DA4229 /* GameListItemView.swift in Sources */,
 				E0DF4F7028B26EE900D457E6 /* Inject.swift in Sources */,
 				E0BD810A28B7333D0018D047 /* SummaryLastGameViewModel.swift in Sources */,
 				E05164C428B7660000E5120D /* LeagueStatsItemViewModel.swift in Sources */,
@@ -766,8 +828,11 @@
 				E0DF4F7228B26EF700D457E6 /* Container.swift in Sources */,
 				E0DF4F8828B36A8100D457E6 /* SummonerDetail.swift in Sources */,
 				E0DF4FA328B3A90800D457E6 /* SummonerSearchViewModel.swift in Sources */,
+				E0D7A17428BB984000DA4229 /* SpellData.swift in Sources */,
 				E0A2E88A28B5CF6E001F7D46 /* SearchSummonerListViewModel.swift in Sources */,
+				E0D7A17228BB7B2600DA4229 /* GameItemSummonerView.swift in Sources */,
 				E0BD810E28B744620018D047 /* GameSummary.swift in Sources */,
+				E0D7A17A28BB9F1300DA4229 /* ItemData.swift in Sources */,
 				E05164BE28B7660000E5120D /* DetailTopViewModel.swift in Sources */,
 				E0DF4F5028B2401900D457E6 /* SummonerSearchView.swift in Sources */,
 				E05164BA28B7660000E5120D /* PreviousSeasonsViewModel.swift in Sources */,
@@ -781,16 +846,19 @@
 				E0DF4F8628B3659400D457E6 /* DetailViewModel.swift in Sources */,
 				E0DF4F6328B2679C00D457E6 /* Log.swift in Sources */,
 				E0DF4F5E28B2677000D457E6 /* BaseTarget.swift in Sources */,
+				E0D7A16B28BB704100DA4229 /* GameListItemViewModel.swift in Sources */,
 				E0DF4F7E28B2A40600D457E6 /* View+Extension.swift in Sources */,
 				E0DF4F9228B38BC900D457E6 /* Int+Extension.swift in Sources */,
 				E05164D428B766A400E5120D /* MostChampionView.swift in Sources */,
 				E0EEDAFE28B1E67200756FF8 /* MainView.swift in Sources */,
 				E0A2E88028B4C13A001F7D46 /* TierImageData.swift in Sources */,
 				E0BD810528B7327A0018D047 /* SummaryView.swift in Sources */,
+				E0D7A17628BB9ADE00DA4229 /* RunePageData.swift in Sources */,
 				E0DF4FA628B3AE5000D457E6 /* SeasonData.swift in Sources */,
 				E0D7A16228BB6F9700DA4229 /* GameListViewModel.swift in Sources */,
 				E0DF4F6028B2677000D457E6 /* Response.swift in Sources */,
 				E0DF4F6E28B26A0C00D457E6 /* SummonerSearch.swift in Sources */,
+				E0D7A18028BBA2FB00DA4229 /* SummonerItemsViewModel.swift in Sources */,
 				E0D7A15428B7A87F00DA4229 /* ChampScoreViewModel.swift in Sources */,
 				E05164D528B766A400E5120D /* MostChampionViewModel.swift in Sources */,
 				E0DF4F7A28B29BE600D457E6 /* SearchSummonerCellView.swift in Sources */,
@@ -802,6 +870,7 @@
 				E0DF4F5D28B2677000D457E6 /* Provider.swift in Sources */,
 				E0EEDAFC28B1E67200756FF8 /* OPGGCopyApp.swift in Sources */,
 				E0DF4F7428B299D000D457E6 /* Result+Extension.swift in Sources */,
+				E0D7A16D28BB7A2D00DA4229 /* Model+Extension.swift in Sources */,
 				E05164BF28B7660000E5120D /* DetailTopView.swift in Sources */,
 				E0D7A14A28B7814300DA4229 /* PlayedWithViewModel.swift in Sources */,
 				E0DF4F5C28B2677000D457E6 /* APIError.swift in Sources */,
@@ -811,6 +880,8 @@
 				E0DF4F5B28B2677000D457E6 /* OpggTarget.swift in Sources */,
 				E05164C528B7660000E5120D /* LeagueStatsItemView.swift in Sources */,
 				E05164BD28B7660000E5120D /* PreviousSeasonsItemView.swift in Sources */,
+				E0D7A18228BBA30A00DA4229 /* SummonerItemsView.swift in Sources */,
+				E0D7A17028BB7AE600DA4229 /* GameItemSummonerViewModel.swift in Sources */,
 				E0DF4F7828B29BD900D457E6 /* SearchSummonerCellViewModel.swift in Sources */,
 				E05164C228B7660000E5120D /* LeagueStatsViewModel.swift in Sources */,
 				E0D7A16428BB6F9E00DA4229 /* GameListView.swift in Sources */,
@@ -819,6 +890,7 @@
 				E0A2E89528B60839001F7D46 /* CustomNavBar.swift in Sources */,
 				E05164D728B769B000E5120D /* ChampionData.swift in Sources */,
 				E05164BC28B7660000E5120D /* PreviousSeasonsItemViewModel.swift in Sources */,
+				E0D7A17E28BBA08F00DA4229 /* SquareRoundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

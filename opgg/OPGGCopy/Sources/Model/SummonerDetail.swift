@@ -27,7 +27,7 @@ struct SummonerDetail: Decodable {
     let internalName: String
     let profileImageURL: URL?
     let level: Int
-    let updatedAt, renewableAt: Date
+    let updatedAt, renewableAt: Date?
     let previousSeasons: [PreviousSeason]
     let leagueStats: [LeagueStats]
     let mostChampions: MostChampions?
@@ -37,10 +37,10 @@ struct SummonerDetail: Decodable {
 //    let recentNormalAnalysis: [JSONAny]
     let champions: [Champion]
 //    let championsByID: [String: ChampionsByID]
-//    let runePagesByID: [String: RunePagesByID]
-//    let runesByID: [String: RunesByID]
-//    let spellsByID: [String: Champion]
-//    let itemsByID: [String: ItemsByID]
+    let runePagesByID: [String: RunePageDatum]
+    let runesByID: [String: RuneDatum]
+    let spellsByID: [String: Spell]
+    let itemsByID: [String: ItemDatum]
     let seasons: [Season]
 //    let seasonsByID: [String: Season]
 
@@ -63,10 +63,10 @@ struct SummonerDetail: Decodable {
 //        case recentNormalAnalysis = "recent_normal_analysis"
         case champions
 //        case championsByID = "championsById"
-//        case runePagesByID = "runePagesById"
-//        case runesByID = "runesById"
-//        case spellsByID = "spellsById"
-//        case itemsByID = "itemsById"
+        case runePagesByID = "runePagesById"
+        case runesByID = "runesById"
+        case spellsByID = "spellsById"
+        case itemsByID = "itemsById"
         case seasons
 //        case seasonsByID = "seasonsById"
     }
@@ -139,6 +139,19 @@ struct Champion: Decodable {
     }
 }
 
+struct Spell: Decodable {
+    let id: Int
+    let key, name: String
+    let imageURL: URL
+    let championDescription: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, key, name
+        case imageURL = "image_url"
+        case championDescription = "description"
+    }
+}
+
 struct MostChampions: Decodable {
     let gameType: GameType
     let seasonID, play, win, lose: Int
@@ -169,6 +182,65 @@ struct MostChampions: Decodable {
             array.append(keyValues)
         }
     }
+}
+
+// MARK: - RunePagesByID
+struct RunePageDatum: Codable {
+    let id: Int
+    let name, runePagesByIDDescription, slogan: String
+    let imageURL: URL
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case runePagesByIDDescription = "description"
+        case slogan
+        case imageURL = "image_url"
+    }
+}
+
+// MARK: - RunesByID
+struct RuneDatum: Decodable {
+    let id, pageID, slotSequence, runeSequence: Int
+    let key, name, shortDesc, longDesc: String
+    let imageURL: URL
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case pageID = "page_id"
+        case slotSequence = "slot_sequence"
+        case runeSequence = "rune_sequence"
+        case key, name
+        case shortDesc = "short_desc"
+        case longDesc = "long_desc"
+        case imageURL = "image_url"
+    }
+}
+
+// MARK: - ItemsByID
+struct ItemDatum: Decodable {
+    let id: Int
+    let name: String
+    let imageURL: URL
+    let isMythic: Bool
+    let intoItems, fromItems: [Int]?
+    let gold: Gold
+    let plaintext, itemsByIDDescription: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case imageURL = "image_url"
+        case isMythic = "is_mythic"
+        case intoItems = "into_items"
+        case fromItems = "from_items"
+        case gold, plaintext
+        case itemsByIDDescription = "description"
+    }
+}
+
+// MARK: - Gold
+struct Gold: Decodable {
+    let sell, total, base: Int
+    let purchasable: Bool
 }
 
 @frozen
@@ -211,4 +283,19 @@ enum GameType: String, Decodable {
     case soloRanked = "SOLORANKED"
     case flexRanked = "FLEXRANKED"
     case aram = "ARAM"
+    
+    var localizeKey: LocalizedKey {
+        switch self {
+        case .ranked:
+            return .rankNotFound
+        case .normal:
+            return .rankNotFound
+        case .soloRanked:
+            return .soloRanked
+        case .flexRanked:
+            return .flexRanked
+        case .aram:
+            return .aram
+        }
+    }
 }

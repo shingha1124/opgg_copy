@@ -14,6 +14,7 @@ extension Color {
     static let grey103 = color(r: 103, g: 115, b: 127)
     static let grey130 = color(r: 130, g: 142, b: 155)
     static let grey224 = color(r: 224, g: 230, b: 247)
+    static let grey243 = color(r: 243, g: 245, b: 247)
     
     static let blue0 = color(r: 0, g: 150, b: 240)
     static let blue42 = color(r: 42, g: 97, b: 241)

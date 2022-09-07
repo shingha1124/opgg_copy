@@ -15,4 +15,8 @@ class Container {
     let opggRepository: OpggRepository = OpggRepositoryImpl()
     let seasonData = SeasonData()
     let championData = ChampionData()
+    let spellData = SpellData()
+    let runePageData = RunePageData()
+    let runeData = RuneData()
+    let itemData = ItemData()
 }
